@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="wow.itc.com.wow_itc.FollowUpPropagationActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select NGO"
+            android:textSize="20sp"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:id="@+id/spinner" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select CITY"
+            android:textSize="20sp"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:id="@+id/city" />
+    </LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Ward No."
+        android:id="@+id/ward"
+        android:layout_marginTop="4dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Ward Name"
+        android:layout_marginTop="4dp"
+        android:id="@+id/pename"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter NGO Employ Name"
+        android:layout_marginTop="4dp"
+        android:id="@+id/ngoempname"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="0.5"
+            android:text="Segregated"
+            android:id="@+id/seg"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="0.5"
+            android:text="NOT SEGREGATED"
+            android:id="@+id/notsg"
+            />
+
+    </LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Note"
+        android:layout_marginTop="4dp"
+        android:id="@+id/note"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      android:layout_marginTop="4dp"
+        android:text="SUBMIT"
+        android:id="@+id/sub"
+        />
+
+</LinearLayout>
