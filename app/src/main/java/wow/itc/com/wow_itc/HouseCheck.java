@@ -30,6 +30,13 @@ public class HouseCheck extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        doorlocked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent k =new Intent(getApplicationContext(),HubCollectionActivity.class);
+        startActivity(k);
+            }
+        });
     }
 
 }

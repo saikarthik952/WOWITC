@@ -22,7 +22,7 @@ public interface HubCollectionInterface {
             @Field("entry.1071880089") String vehiclename,
             @Field("entry.1181792519") Float dmw,
             @Field("entry.1641534960") Float Lvp,
-            @Field("entry.17745880880") Float colorecord,
+            @Field("entry.1774588088") Float colorecord,
             @Field("entry.719354939") Float petbottles,
             @Field("entry.1737000929") Float milk,
             @Field("entry.1914556589") Float hardplastic,
@@ -41,9 +41,10 @@ public interface HubCollectionInterface {
             @Field("entry.1082909245") Float totalkgs,
             @Field("entry.96702655") Float totalamount,
             @Field("entry.105922357") Float beerbottles,
+            @Field("entry.650159043") String supname,
             @Field("entry.1230304692") String latitude,
-            @Field("entry.1108470814") String longitude,
-            @Field("entry.886210116") String note
+            @Field("entry.1108470814") String longitude
+
     );
 
 

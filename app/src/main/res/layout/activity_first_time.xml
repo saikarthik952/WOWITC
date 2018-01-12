@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="wow.itc.com.wow_itc.HubCollectionRegister">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
+    tools:ignore="HardcodedText"
     tools:context="wow.itc.com.wow_itc.FirstTime">
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,14 +51,53 @@
         android:id="@+id/ward"
         android:layout_marginTop="4dp"
         />
-    <EditText
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Door Locked"
+        android:layout_weight="1"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Yes"
+        android:id="@+id/dooryes"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="No"
+        android:id="@+id/doorno"/>
+
+</LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Select PE Name"
-        android:layout_marginTop="4dp"
-        android:id="@+id/pename"
-        />
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="House Hold Interested "/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Yes"
+            android:id="@+id/inyes"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="No"
+            android:id="@+id/inno"/>
 
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,11 +120,98 @@
             />
         <EditText
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Phone Number"
+            android:id="@+id/phoneno"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="4dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Enter Email"
+            android:id="@+id/email"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="4dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Number of HouseHolds"
+            android:inputType="numberDecimal"
+            android:id="@+id/householdno"
+            android:layout_marginTop="4dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bag Issued"
+                android:layout_weight="1"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Yes"
+                android:id="@+id/bagyes"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="No"
+                android:id="@+id/bagno"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wet Waste composite"
+                tools:ignore="HardcodedText"
+                android:layout_weight="1"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Yes"
+                android:id="@+id/wetyes"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="No"
+                android:id="@+id/wetno"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/bags"
             android:layout_marginTop="4dp"
-            android:hint="Enter  Numberof Bags"/>
+            android:hint="LandMarks"/>
+
     </LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select PE Name"
+        android:layout_marginTop="4dp"
+        android:id="@+id/pename"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+android:text="Click Image"
+        android:id="@+id/image"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,9 +220,11 @@
         android:inputType="textMultiLine"
         android:maxLines="4"
         android:hint="Note"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SUBMIT"
         android:id="@+id/submit"/>
 </LinearLayout>
+</ScrollView>

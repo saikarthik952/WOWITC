@@ -141,7 +141,7 @@ Button b;
         editor.apply();
       String c=  String.valueOf(msharedpreferences.getAll());
         Log.e("XXX",c);
-        Intent i = new Intent(getApplicationContext(),HubCollectionActivity.class);
+        Intent i = new Intent(getApplicationContext(),HouseCheck.class);
         startActivity(i);
     }
 }

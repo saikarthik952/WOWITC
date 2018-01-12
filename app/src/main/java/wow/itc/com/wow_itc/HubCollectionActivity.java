@@ -177,6 +177,7 @@ public class HubCollectionActivity extends AppCompatActivity  {
                 afbeerbottle=multiplyfloat(xfbeerbottle,fbeerbottle);
                 total=calctotal();
                 totalamount=totalamountcount();
+                scollecpointname=collectionpointname.getText().toString();
               //  Location mlocation = new Location(LOCATION_SERVICE);
                // new SendRequest().execute();
                 if(gpsTracker.getIsGPSTrackingEnabled()) {
@@ -190,7 +191,7 @@ public class HubCollectionActivity extends AppCompatActivity  {
                             ,afdmw,aflvp,afcolorrec,afpetbot,afmilk,afhardplastic,aftetra,
                             afkraft,afoldpapaer,afoldmag,afnotebook,afwhiterec,afiron
                             ,afaluminium,aftin,aftinaluminium,afcoconut
-                            ,afmaterilaa,total,totalamount,afbeerbottle,shubsupname,lat,longitude);
+                            ,afmaterilaa,total,totalamount,afbeerbottle,shubsupname,lat, longitude );
                     completeFollowup.enqueue(callCallbac);
                 }
             }
