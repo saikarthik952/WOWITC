@@ -21,6 +21,8 @@ public interface FollowupPropagation {
             @Field("entry.1273814777") int Segregated,
             @Field("entry.664955383") int notSegregated,
             @Field("entry.1140562241") String NameofNGO,
-            @Field("entry.1468124154") String Note
+            @Field("entry.1468124154") String Latitude,
+            @Field("entry.709312748") String Longitude,
+            @Field("entry.90120043") String Note
     );
 }

@@ -5,18 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:textAlignment="center"
     tools:context="wow.itc.com.wow_itc.FollowUpPropagationActivity">
+
+    <android.support.v7.widget.Toolbar android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Follow-Up Propagation"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:subtitle="* Fields are Mandatory"
+        android:background="#8fea2e"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
         <TextView
+            android:textColor="#000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select NGO"
+            android:text="Select NGO *"
             android:textSize="20sp"/>
 
         <Spinner
+            android:textColor="#000000"
             android:layout_width="match_parent"
             android:layout_height="29dp"
             android:id="@+id/spinner" />
@@ -24,49 +37,84 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
+
         android:orientation="horizontal"
         android:layout_marginTop="4dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select CITY"
+            android:text="Select CITY *"
+            android:textColor="#000000"
             android:textSize="20sp"/>
 
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="29dp"
-            android:id="@+id/city" />
+            android:id="@+id/city"
+            android:textColor="#000000"/>
     </LinearLayout>
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Ward No."
+        android:hint="Enter Ward No. *"
+        android:textColor="#000000"
+        android:background="@drawable/etborder"
         android:id="@+id/ward"
         android:layout_marginTop="4dp"
         />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Ward Name"
+        android:hint="Enter Ward Name *"
+        android:textColor="#000000"
         android:layout_marginTop="4dp"
         android:id="@+id/pename"
+        android:background="@drawable/etborder"
         />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter NGO Employ Name"
+        android:textColor="#000000"
+        android:background="@drawable/etborder"
+        android:hint="Enter NGO Employ Name *"
         android:layout_marginTop="4dp"
         android:id="@+id/ngoempname"
         />
+    </android.support.design.widget.TextInputLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
         <Button
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_weight="0.5"
             android:text="Segregated"
+            android:textColor="#000000"
             android:id="@+id/seg"
             />
         <Button
@@ -74,22 +122,36 @@
             android:layout_height="150dp"
             android:layout_weight="0.5"
             android:text="NOT SEGREGATED"
+
             android:id="@+id/notsg"
+            android:textColor="#000000"
             />
 
     </LinearLayout>
+    </RelativeLayout>
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp">
     <EditText
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Note"
+        android:textColor="#000000"
         android:layout_marginTop="4dp"
+        android:background="@drawable/etborder"
         android:id="@+id/note"
         />
+    </android.support.design.widget.TextInputLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
       android:layout_marginTop="4dp"
         android:text="SUBMIT"
+        android:textColor="#000000"
         android:id="@+id/sub"
         />
 

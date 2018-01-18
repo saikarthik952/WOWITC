@@ -14,26 +14,36 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 public class HubCollectionRegister extends AppCompatActivity {
-
-    String[] ngodata={"NGO-1","NGO-2","NGO-3","NGO-4","NGO-5","NGO-6","Others Please Specify"};
+    SharedPreferences msharedpreferences;
+ Button skip;
+//    String[] ngodata={"NGO-1","NGO-2","NGO-3","NGO-4","NGO-5","NGO-6","Others Please Specify"};
     EditText wardno,nameofhub,collectionpointname,dmw,lvp,colorrec,petbot,milk,hardplastic,tetra,kraft,oldpapaer,oldmag,notebook,whiterec,iron,aluminium,tin,tinaluminium,coconut,materilaa,beerbottle,hubsupname;
     float fdmw,flvp,fcolorrec,fpetbot,fmilk,fhardplastic,ftetra,fkraft,foldpapaer,foldmag,fnotebook,fwhiterec,firon,faluminium,ftin,ftinaluminium,fcoconut,fmaterilaa,fbeerbottle;
     Spinner ngo,city;
     int x,y;
 Button b;
-    String[] citydata={"city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1"};
+  //  String[] citydata={"city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hub_collection_register);
         ngo=findViewById(R.id.spinner);
-        ArrayAdapter<String> aa = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,ngodata);
+        ArrayAdapter<String> aa = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.ngos));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//Setting the ArrayAdapter data on the Spinner
+//Setting the
+// ArrayAdapter data on the Spinner
+        skip=findViewById(R.id.skip);
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent m= new Intent(getApplicationContext(),HouseCheck.class);
+                startActivity(m);
+            }
+        });
         ngo.setAdapter(aa);
         b=findViewById(R.id.submit);
         city=findViewById(R.id.city);
-        ArrayAdapter<String> bb = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,citydata);
+        ArrayAdapter<String> bb = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.cities));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         city.setAdapter(bb);
         wardno=findViewById(R.id.ward);
@@ -93,12 +103,15 @@ Button b;
 
     @SuppressLint("UseValueOf")
     private void sharedsrat() {
-        SharedPreferences msharedpreferences=getApplicationContext().getSharedPreferences("HUB",MODE_PRIVATE);
+        msharedpreferences=getApplicationContext().getSharedPreferences("HUB",MODE_PRIVATE);
+
+
         SharedPreferences.Editor editor=msharedpreferences.edit();
         editor.putInt("ngo",x);
         editor.putInt("city",y);
         editor.putString("nameofhub",nameofhub.getText().toString());
         editor.putString("collectioname",collectionpointname.getText().toString());
+        editor.putString("Supervisorname",hubsupname.getText().toString());
         fdmw= new Float(dmw.getText().toString());
         editor.putFloat("dmw",fdmw);
         flvp=  new Float(lvp.getText().toString());
@@ -137,7 +150,7 @@ Button b;
         editor.putFloat("materiala",fmaterilaa);
         fbeerbottle=new Float(beerbottle.getText().toString());
         editor.putFloat("beerbottle",fbeerbottle);
-        editor.putString("Supervisorname",hubsupname.getText().toString());
+
         editor.apply();
       String c=  String.valueOf(msharedpreferences.getAll());
         Log.e("XXX",c);

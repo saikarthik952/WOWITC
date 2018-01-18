@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    tools:context="wow.itc.com.wow_itc.SchoolActivity">
+
+    <Button
+        android:id="@+id/visitbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="School Visit"
+        android:textColor="#000"
+android:layout_above="@+id/propagationbtn"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:text="School Propagation"
+        android:id="@+id/propagationbtn"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="School ISRC"
+        android:id="@+id/isrcbtn"
+        android:layout_below="@+id/propagationbtn"
+        />
+
+</RelativeLayout>

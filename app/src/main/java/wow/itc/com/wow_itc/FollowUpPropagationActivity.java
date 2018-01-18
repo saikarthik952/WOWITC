@@ -2,6 +2,7 @@ package wow.itc.com.wow_itc;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,26 +23,27 @@ public class FollowUpPropagationActivity extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     String l,nme,ngopenames,xd,yd,n,snote;
     EditText name,wardname,notes,ward,ngopename;
-
+    String lat,longitude;
 
     int a,bx;
-    String[] ngodata={"NGO-1","NGO-2","NGO-3","NGO-4","NGO-5","NGO-6","Others Please Specify"};
+    //String[] ngodata={"NGO-1","NGO-2","NGO-3","NGO-4","NGO-5","NGO-6","Others Please Specify"};
     Button b,sg,notsg;
     int seg=0,notseg=0;
-    String[] citydata={"city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1"};
+    //String[] citydata={"city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow_up_propagation);
         ngo=findViewById(R.id.spinner);
-        ArrayAdapter<String> aa = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,ngodata);
+        final gpstracker gpsTracker = new gpstracker(this);
+        ArrayAdapter aa = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.ngos));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //Setting the ArrayAdapter data on the Spinner
         ngo.setAdapter(aa);
         b=findViewById(R.id.sub);
         city=findViewById(R.id.city);
-        ArrayAdapter<String> bb = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,citydata);
+        ArrayAdapter<String> bb = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.cities));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         city.setAdapter(bb);
 notes=findViewById(R.id.note);
@@ -55,16 +57,13 @@ notsg=findViewById(R.id.notsg);
         sharedpreferences   = getSharedPreferences("DATAPE", Context.MODE_PRIVATE);
         int x = sharedpreferences.getInt("NGO", 0);
         int  y= sharedpreferences.getInt("City",0);
-        final String[] wardno = {sharedpreferences.getString("wardno", "")};
+         String wardno = sharedpreferences.getString("wardno", "");
         ngo.setSelection(x);
         city.setSelection(y);
-        ward.setText(wardno[0]);
+        ward.setText(wardno);
 
-        SharedPreferences.Editor editor=sharedpreferences.edit();
-        editor.putString("ngoempname",ngopenames);
-       editor.putString("wardname",nme);
-       editor.apply();
-        ngopename.setText(sharedpreferences.getString("ngoempname",""));
+
+        ngopename.setText(sharedpreferences.getString("pename",""));
         sg.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -96,8 +95,14 @@ notsg=findViewById(R.id.notsg);
                n=ngopename.getText().toString();
                 xd = ngo.getSelectedItem().toString();
                 yd=city.getSelectedItem().toString();
-                Call<Void> completeFollowup = spreadsheetWebService.completeFollowup(xd,yd,l,nme,seg,notseg,n,snote);
-                completeFollowup.enqueue(callCallbac);
+
+                if(gpsTracker.getIsGPSTrackingEnabled()) {
+                    lat = String.valueOf(gpsTracker.getLatitude());
+                    longitude = String.valueOf(gpsTracker.getLongitude());
+
+                    Call<Void> completeFollowup = spreadsheetWebService.completeFollowup(xd, yd, l, nme, seg, notseg,n,lat,longitude,  snote);
+                    completeFollowup.enqueue(callCallbac);
+                }
             }
         });
 
@@ -106,6 +111,10 @@ notsg=findViewById(R.id.notsg);
         @Override
         public void onResponse(Call<Void> call, Response<Void> response) {
             Log.d("XXX", "Submitted. " + response);
+            Intent lp= getIntent();
+            lp.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            finish();
+            startActivity(lp);
         }
 
         @Override

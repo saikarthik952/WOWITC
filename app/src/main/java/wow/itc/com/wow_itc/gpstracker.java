@@ -86,6 +86,7 @@ public class gpstracker extends Service implements LocationListener {
             locationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
 
             //getting GPS status
+            assert locationManager != null;
             isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
             //getting network status
@@ -207,7 +208,7 @@ public class gpstracker extends Service implements LocationListener {
         alertDialog.setMessage("Please Enable");
 
         //On Pressing Setting button
-        alertDialog.setPositiveButton("Seetings", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which)
@@ -260,69 +261,8 @@ public class gpstracker extends Service implements LocationListener {
      * Try to get AddressLine
      * @return null or addressLine
      */
-    public String getAddressLine(Context context) {
-        List<Address> addresses = getGeocoderAddress(context);
 
-        if (addresses != null && addresses.size() > 0) {
-            Address address = addresses.get(0);
-            String addressLine = address.getAddressLine(0);
 
-            return addressLine;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Try to get Locality
-     * @return null or locality
-     */
-    public String getLocality(Context context) {
-        List<Address> addresses = getGeocoderAddress(context);
-
-        if (addresses != null && addresses.size() > 0) {
-            Address address = addresses.get(0);
-            String locality = address.getLocality();
-
-            return locality;
-        }
-        else {
-            return null;
-        }
-    }
-
-    /**
-     * Try to get Postal Code
-     * @return null or postalCode
-     */
-    public String getPostalCode(Context context) {
-        List<Address> addresses = getGeocoderAddress(context);
-
-        if (addresses != null && addresses.size() > 0) {
-            Address address = addresses.get(0);
-            String postalCode = address.getPostalCode();
-
-            return postalCode;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Try to get CountryName
-     * @return null or postalCode
-     */
-    public String getCountryName(Context context) {
-        List<Address> addresses = getGeocoderAddress(context);
-        if (addresses != null && addresses.size() > 0) {
-            Address address = addresses.get(0);
-            String countryName = address.getCountryName();
-
-            return countryName;
-        } else {
-            return null;
-        }
-    }
 
     @Override
     public void onLocationChanged(Location location) {

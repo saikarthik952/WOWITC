@@ -4,36 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="wow.itc.com.wow_itc.HubCollectionRegister">
+    tools:context="wow.itc.com.wow_itc.HubCollectionRegister"
+    tools:ignore="ScrollViewCount"
+
+    >
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:ignore="HardcodedText"
-    tools:context="wow.itc.com.wow_itc.FirstTime">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select NGO"
-            android:textSize="20sp"/>
+    tools:ignore="ExtraText,HardcodedText"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="29dp"
-            android:id="@+id/spinner" />
-    </LinearLayout>
+    tools:context="wow.itc.com.wow_itc.FirstTime">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="HouseHold Profile"
+        app:subtitle="*Fields are Mandatory"
+        app:subtitleTextColor="#9e9c9c"
+
+        >
+
+        <Button
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="EDIT"
+android:id="@+id/edit"
+            android:textSize="16sp" />
+    </android.support.v7.widget.Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:orientation="horizontal"
         android:layout_marginTop="4dp">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    android:textColor="#000000"
+            android:text="Select NGO"
+            android:textSize="20sp"/>
+
+        <Spinner
+            android:textColor="#000000"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:id="@+id/spinner"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
+        <TextView
+            android:textColor="#000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select CITY"
@@ -44,187 +77,357 @@
             android:layout_height="29dp"
             android:id="@+id/city" />
     </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
     <EditText
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Select Ward No."
+        android:textColor="#000000"
         android:id="@+id/ward"
+        android:background="@drawable/etborder"
         android:layout_marginTop="4dp"
         />
-
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Select Ward Name"
+            android:id="@+id/wardname"
+            android:background="@drawable/etborder"
+            android:textColor="#000000"
+            android:layout_marginTop="4dp"
+            />
+    </android.support.design.widget.TextInputLayout>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_marginTop="4dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Door Locked"
-        android:layout_weight="1"/>
-    <CheckBox
+        android:textColor="#000000"
+        android:layout_weight="1"
+
+        />
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Yes"
-        android:id="@+id/dooryes"/>
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="No"
-        android:id="@+id/doorno"/>
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:id="@+id/door"
+
+        >
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:textColor="#000000"
+            android:layout_weight="1"
+            android:id="@+id/dooryes"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:textColor="#000000"
+            android:layout_weight="1"
+            android:id="@+id/doorno"/>
+    </RadioGroup>
 
 </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+android:layout_weight="0.632"
+            android:textColor="#000000"
+            android:text="House Interested"/>
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+           android:layout_marginLeft="16dp"
             android:layout_weight="1"
-            android:text="House Hold Interested "/>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Yes"
-            android:id="@+id/inyes"/>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="No"
-            android:id="@+id/inno"/>
-
+            android:id="@+id/household"
+            >
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textColor="#000000"
+             android:layout_weight="1"
+                android:id="@+id/houseyes"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:textColor="#000000"
+               android:layout_weight="1"
+                android:id="@+id/houseno"/>
+        </RadioGroup>
     </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="4dp">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/check"
+        tools:ignore="UselessParent">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/first"
+            android:textColor="#000000"
+            android:text="First Time"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/followup"
+            android:textColor="#000000"
+            android:text="Follow Up"/>
+    </RadioGroup>
+</LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/ftlyout"
+        android:id="@+id/houseid"
+
         android:layout_marginTop="4dp">
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter HouseHold Name"
+            android:background="@drawable/etborder"
             android:layout_marginTop="4dp"
+            android:textColor="#000000"
             android:id="@+id/name"
             />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_height="wrap_content">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Address"
+            android:background="@drawable/etborder"
+            android:textColor="#000000"
             android:id="@+id/address"
             android:layout_marginTop="4dp"
             />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_height="wrap_content">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/etborder"
             android:hint="Enter Phone Number"
             android:id="@+id/phoneno"
+            android:textColor="#000000"
             android:inputType="numberDecimal"
             android:layout_marginTop="4dp"
-            />
+            tools:ignore="TextFields" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/etborder"
             android:hint="Enter Enter Email"
             android:id="@+id/email"
+            android:textColor="#000000"
             android:inputType="textEmailAddress"
             android:layout_marginTop="4dp"
             />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Number of HouseHolds"
+            android:hint="Enter Number of Members"
+            android:background="@drawable/etborder"
             android:inputType="numberDecimal"
             android:id="@+id/householdno"
+            android:textColor="#000000"
             android:layout_marginTop="4dp"
             />
+        </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bag Issued"
-                android:layout_weight="1"/>
-            <CheckBox
+                android:layout_weight="0.7"
+                android:textColor="#000000"
+
+                />
+            <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Yes"
-                android:id="@+id/bagyes"/>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="No"
-                android:id="@+id/bagno"/>
+                android:orientation="horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:id="@+id/bag"
+
+                >
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                  android:layout_weight="0.4"
+                    android:textColor="#000000"
+                    android:id="@+id/bagyes"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                   android:layout_weight="0.4"
+                    android:textColor="#000000"
+                    android:id="@+id/bagno"/>
+            </RadioGroup>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wet Waste composite"
                 tools:ignore="HardcodedText"
-                android:layout_weight="1"/>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="Yes"
-                android:id="@+id/wetyes"/>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="No"
-                android:id="@+id/wetno"/>
 
+                android:textColor="#000000"
+               />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="16dp"
+                android:id="@+id/wetwaste"
+                >
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:textColor="#000000"
+                    android:layout_weight="0.6"
+                    android:id="@+id/wasteyes"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:textColor="#000000"
+                    android:layout_weight="0.6"
+                    android:id="@+id/wasteno"/>
+            </RadioGroup>
         </LinearLayout>
+        <android.support.design.widget.TextInputLayout
 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/bags"
+            android:id="@+id/landmarks"
             android:layout_marginTop="4dp"
+            android:background="@drawable/etborder"
+            android:textColor="#000000"
             android:hint="LandMarks"/>
-
+        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Select PE Name"
         android:layout_marginTop="4dp"
+        android:textColor="#000000"
+        android:background="@drawable/etborder"
         android:id="@+id/pename"
-        />
+        /></android.support.design.widget.TextInputLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 android:text="Click Image"
+        android:layout_marginTop="4dp"
+        android:textColor="#000000"
         android:id="@+id/image"/>
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/etborder"
         android:id="@+id/Note"
         android:layout_marginTop="4dp"
         android:inputType="textMultiLine"
         android:maxLines="4"
         android:hint="Note"/>
-
+    </android.support.design.widget.TextInputLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SUBMIT"
+        android:layout_marginTop="4dp"
         android:id="@+id/submit"/>
 </LinearLayout>
 </ScrollView>

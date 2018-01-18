@@ -1,5 +1,7 @@
 package wow.itc.com.wow_itc;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +15,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,38 +29,52 @@ import retrofit2.Retrofit;
 
 public class FirstTime extends AppCompatActivity {
     Spinner ngo,city;
+
+    Button b,edit;
+ProgressDialog md;
+    RadioGroup door,interest,wetwaste,bagissue,check;
+LinearLayout linearLayout;
+String sdoor="",sinterest="",swetwaste="",sbagiisue="",scheck="",mg;
     SharedPreferences sharedpreferences;
-    String pe,nme,bags,wardnos,addresss,xd,yd,snote;
-    EditText name,pename,nobags,ward,address,note;
-    Button image;
+Button image;
+EditText wardno,wardname,pename,householdcount,householdname,householdaddress,householdemail,householdnumber,landmarks,note;
 
-
-    int sr=0,a,bx;
-    String[] ngodata={"NGO-1","NGO-2","NGO-3","NGO-4","NGO-5","NGO-6","Others Please Specify"};
-    Button b;
-    String[] citydata={"city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1"};
+int srnum;
+String lat,longitude,ngom,citym,swardno,swardname,spename,shouseholdcount,shouseholdname,shouseholdaddress,shouseholdemail,shouseholdnumber,slandmarks,snote;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_time);
         ngo=findViewById(R.id.spinner);
-        ArrayAdapter<String> aa = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,ngodata);
+door=findViewById(R.id.door);
+interest=findViewById(R.id.household);
+wetwaste=findViewById(R.id.wetwaste);
+bagissue=findViewById(R.id.bag);
+md=new ProgressDialog(this);
+        final gpstracker gpsTracker = new gpstracker(this);
+        linearLayout=(LinearLayout)findViewById(R.id.houseid);
+        linearLayout.setVisibility(View.GONE);
+        @SuppressLint("ResourceType") ArrayAdapter<String> aa = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.ngos));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //Setting the ArrayAdapter data on the Spinner
         ngo.setAdapter(aa);
         b=findViewById(R.id.submit);
         city=findViewById(R.id.city);
-        ArrayAdapter<String> bb = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,citydata);
+        ArrayAdapter<String> bb = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.cities));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         city.setAdapter(bb);
 
         pename=findViewById(R.id.pename);
-
+        wardno=findViewById(R.id.ward);
+        wardname=findViewById(R.id.wardname);
+        householdcount=findViewById(R.id.householdno);
+        householdname=findViewById(R.id.name);
+        householdaddress=findViewById(R.id.address);
+        householdemail=findViewById(R.id.email);
+        householdnumber=findViewById(R.id.phoneno);
+        landmarks=findViewById(R.id.landmarks);
+check=findViewById(R.id.check);
 image=findViewById(R.id.image);
-        ward=findViewById(R.id.ward);
- name=findViewById(R.id.name);
- address=findViewById(R.id.address);
- nobags=findViewById(R.id.bags);
 note=findViewById(R.id.Note);
         sharedpreferences   = getSharedPreferences("DATAPE", Context.MODE_PRIVATE);
 
@@ -64,46 +82,175 @@ note=findViewById(R.id.Note);
         Log.d("AddNewRecord", "Size: " + sharedpreferences.getAll().size());
         int x = sharedpreferences.getInt("NGO", 0);
         int  y= sharedpreferences.getInt("City",0);
-        final String[] wardno = {sharedpreferences.getString("wardno", "")};
-        final String  penames= sharedpreferences.getString("pename","");
+        swardno = sharedpreferences.getString("wardno", "");
+        swardname=sharedpreferences.getString("wardname","");
+          spename= sharedpreferences.getString("pename","");
         ngo.setSelection(x);
         city.setSelection(y);
-        ward.setText(wardno[0]);
-        pename.setText(penames);
+        pename.setText(spename);
+        wardno.setText(swardno);
+        wardname.setText(swardname);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://docs.google.com/forms/u/3/d/e/")
                 .build();
         final HouseHoldFirstTime spreadsheetWebService = retrofit.create(HouseHoldFirstTime.class);
+        image.setVisibility(View.GONE);
+       note.setVisibility(View.GONE);
 image.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        File imagesFolder = new File(Environment.getExternalStorageDirectory(), "ITC_WOW");
-        imagesFolder.mkdirs(); // <----
-        String mg=penames+"_"+(++sr)+""+".jpg";
+        File imagesFolder = new File(Environment.getExternalStorageDirectory(), "ITC");
+        imagesFolder.mkdirs();
+        spename=pename.getText().toString();// <----
+        shouseholdname  =householdname.getText().toString();
+         mg=spename+"_"+(shouseholdname)+""+".jpg";
         File image = new File(imagesFolder, mg);
         Uri uriSavedImage = Uri.fromFile(image);
         Log.e("XXX",mg);
-        Intent imageIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+
     //    String pathMedia = Environment.getExternalStorageDirectory().getAbsolutePath() + "/MyImages/image_001.png";
      //   Uri uriSavedImage = Uri.fromFile(new File(pathMedia));
+        Intent imageIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         imageIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
         startActivityForResult(imageIntent,1);
+    }
+});
+findViewById(R.id.edit).setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent i = new Intent(getApplicationContext(),PERegisterActivity.class);
+        i.putExtra("editoption","editing");
+        startActivity(i);
+    }
+});
+door.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if(checkedId==-1)
+        {
+            sdoor="not selected";
+        }
+        else if(checkedId==R.id.dooryes)
+        {
+            sdoor="Yes";
+            image.setVisibility(View.GONE);
+            note.setVisibility(View.GONE);
+            linearLayout.setVisibility(View.GONE);
+        }
+        else if(checkedId==R.id.doorno)
+        {
+         sdoor="No";
+            image.setVisibility(View.VISIBLE);
+            note.setVisibility(View.VISIBLE);
+         linearLayout.setVisibility(View.VISIBLE);
+        }
+    }
+});
+interest.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if(checkedId==-1)
+        {
+            sinterest="not selected";
+        }
+        else if(checkedId==R.id.houseyes)
+        {
+            sinterest="Yes";
+        }
+        else if(checkedId==R.id.houseno)
+        {
+            sinterest="No";
+        }
+    }
+});
+check.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if(checkedId==-1)
+        {
+            scheck="not selected";
+        }
+        else if(checkedId==R.id.first)
+        {
+            scheck="First Time";
+            householdaddress.setVisibility(View.VISIBLE);
+        }
+        else if(checkedId==R.id.followup)
+        {
+            scheck="Follow Up";
+            householdaddress.setVisibility(View.GONE);
+        }
+    }
+});
+wetwaste.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if(checkedId==-1)
+        {
+            swetwaste="not selected";
+        }
+        else if(checkedId==R.id.wasteyes)
+        {
+            swetwaste="Yes";
+        }
+        else if(checkedId==R.id.wasteno)
+        {
+            swetwaste="No";
+        }
+    }
+});
+bagissue.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if(checkedId==-1)
+        {
+            sbagiisue="not selected";
+        }
+        else if(checkedId==R.id.bagyes)
+        {
+            sbagiisue="Yes";
+        }
+        else if(checkedId==R.id.bagno)
+        {
+            sbagiisue="No";
+        }
     }
 });
         b.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        pe=pename.getText().toString();
-       nme=name.getText().toString();
-       addresss=address.getText().toString();
-                        bags=nobags.getText().toString();
-                        wardnos=ward.getText().toString();
-                       xd = ngo.getSelectedItem().toString();
-                       yd=city.getSelectedItem().toString();
+md.setTitle("Loading");
+md.setCancelable(false);
+
+md.show();
+
+
+
+
+       swardname=wardname.getText().toString();
+       swardno=wardno.getText().toString();
+       shouseholdcount=householdcount.getText().toString();
+       shouseholdemail=householdemail.getText().toString();
+       shouseholdname  =householdname.getText().toString();
+       spename=pename.getText().toString();
+slandmarks=landmarks.getText().toString();
+       shouseholdnumber=householdnumber.getText().toString();
+                        shouseholdaddress=householdaddress.getText().toString();
+                       // bags=nobags.getText().toString();
+                        //wardnos=ward.getText().toString();
+                       ngom = ngo.getSelectedItem().toString();
+                       citym=city.getSelectedItem().toString();
                        snote=note.getText().toString();
-                        Call<Void> completeQuestionnaireCall = spreadsheetWebService.completeQuestionnaire(xd,yd,wardnos,penames,nme,addresss,bags,snote);
-                        completeQuestionnaireCall.enqueue(callCallback);
+                       if(gpsTracker.getIsGPSTrackingEnabled()) {
+                           lat=String.valueOf(gpsTracker.getLatitude());
+                           longitude=String.valueOf(gpsTracker.getLongitude());
+                          Call<Void> completeQuestionnaireCall = spreadsheetWebService.completeQuestionnaire(ngom,citym,swardno,swardname
+                                  ,sdoor,sinterest,scheck,spename,shouseholdname,shouseholdaddress,shouseholdnumber,
+                                  shouseholdemail,shouseholdcount,swetwaste,mg,slandmarks,lat,longitude,snote);
+
+                           completeQuestionnaireCall.enqueue(callCallback);
+                       }
                     }
 
 
@@ -115,6 +262,13 @@ image.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onResponse(Call<Void> call, Response<Void> response) {
             Log.d("XXX", "Submitted. " + response);
+md.setTitle("Submitted");
+            md.dismiss();
+Intent lp= getIntent();
+lp.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+finish();
+startActivity(lp);
+
         }
 
         @Override

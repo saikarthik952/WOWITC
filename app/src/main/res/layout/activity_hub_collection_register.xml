@@ -50,6 +50,7 @@ android:layout_height="match_parent"
         android:imeOptions="actionNext"
         android:maxLines="1"
         android:layout_marginTop="4dp"
+        android:background="@drawable/etborder"
         />
     <android.support.design.widget.TextInputLayout
 
@@ -61,6 +62,7 @@ android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
+            android:background="@drawable/etborder"
             android:imeOptions="actionNext"
             android:maxLines="1"
             android:hint="Name Of The HUB"/>
@@ -80,6 +82,7 @@ android:layout_height="match_parent"
             android:imeOptions="actionNext"
             android:maxLines="1"
             android:id="@+id/collname"
+            android:background="@drawable/etborder"
             android:hint="Collection Point Name"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -102,6 +105,7 @@ android:layout_height="match_parent"
             android:imeOptions="actionNext"
             android:maxLines="1"
             android:id="@+id/dmw"
+            android:background="@drawable/etborder"
             android:hint="Dry Mixed Waste"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -115,6 +119,7 @@ android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
+            android:background="@drawable/etborder"
             android:imeOptions="actionNext"
             android:maxLines="1"
             android:id="@+id/lvpmll"
@@ -130,6 +135,7 @@ android:layout_height="match_parent"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/etborder"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
             android:maxLines="1"
@@ -150,6 +156,7 @@ android:layout_height="match_parent"
             android:imeOptions="actionNext"
             android:maxLines="1"
             android:id="@+id/pet"
+            android:background="@drawable/etborder"
             android:hint="Pet Bottle"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -166,6 +173,7 @@ android:layout_height="match_parent"
             android:imeOptions="actionNext"
             android:maxLines="1"
             android:id="@+id/milk"
+            android:background="@drawable/etborder"
             android:hint="Milk Pouches"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -182,6 +190,7 @@ android:layout_height="match_parent"
             android:imeOptions="actionNext"
             android:maxLines="1"
             android:id="@+id/hardplstic"
+            android:background="@drawable/etborder"
             android:hint="Hard Plastic"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -198,6 +207,7 @@ android:layout_height="match_parent"
             android:imeOptions="actionNext"
             android:maxLines="1"
             android:id="@+id/tetra"
+            android:background="@drawable/etborder"
             android:hint="Tetra Pack"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -214,6 +224,7 @@ android:layout_height="match_parent"
             android:imeOptions="actionNext"
             android:maxLines="1"
             android:id="@+id/kraft"
+            android:background="@drawable/etborder"
             android:hint="Kraft"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -229,6 +240,7 @@ android:layout_height="match_parent"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:background="@drawable/etborder"
             android:id="@+id/oldpaper"
             android:hint="Old Newspaper"/>
 
@@ -245,6 +257,7 @@ android:layout_height="match_parent"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:background="@drawable/etborder"
             android:id="@+id/oldmag"
             android:hint="Old Magazine"/>
 
@@ -261,6 +274,7 @@ android:layout_height="match_parent"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:background="@drawable/etborder"
             android:id="@+id/book"
             android:hint="NoteBooks and Text Books"/>
 
@@ -277,6 +291,7 @@ android:layout_height="match_parent"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:background="@drawable/etborder"
             android:id="@+id/whiterec"
             android:hint="White Records"/>
 
@@ -293,6 +308,7 @@ android:layout_height="match_parent"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:background="@drawable/etborder"
             android:id="@+id/iron"
             android:hint="Metal (Iron)"/>
 
@@ -309,6 +325,7 @@ android:layout_height="match_parent"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:background="@drawable/etborder"
             android:id="@+id/aluminium"
             android:hint="Metal (Aluminuim)"/>
 
@@ -325,6 +342,7 @@ android:layout_height="match_parent"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:background="@drawable/etborder"
             android:id="@+id/tin"
             android:hint="Tin (Metal Magnet Check)"/>
 
@@ -341,6 +359,7 @@ android:layout_height="match_parent"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
 
+            android:background="@drawable/etborder"
 android:id="@+id/tinaluminuim"
             android:hint="Tin (Aluminuim)"/>
 
@@ -357,6 +376,7 @@ android:id="@+id/tinaluminuim"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:background="@drawable/etborder"
             android:id="@+id/coconut"
             android:hint="Coconut shell"/>
 
@@ -373,6 +393,7 @@ android:id="@+id/tinaluminuim"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:background="@drawable/etborder"
             android:id="@+id/materiala"
             android:hint="Material A"/>
 
@@ -389,6 +410,7 @@ android:id="@+id/tinaluminuim"
             android:inputType="numberDecimal"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:background="@drawable/etborder"
             android:id="@+id/bottle"
             android:hint="Beer Bottle (Cost for each)"/>
 
@@ -405,14 +427,20 @@ android:id="@+id/tinaluminuim"
 
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:background="@drawable/etborder"
             android:id="@+id/supname"
             android:hint="Supervisor Name"/>
 
     </android.support.design.widget.TextInputLayout>
     <Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="SUBMIT"
+    android:id="@+id/submit"/>
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SUBMIT"
-        android:id="@+id/submit"/>
+        android:text="SKIP"
+        android:id="@+id/skip"/>
 </LinearLayout>
 </ScrollView>
