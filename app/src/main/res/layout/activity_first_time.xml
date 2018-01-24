@@ -16,19 +16,19 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:ignore="ExtraText,HardcodedText"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
 
     tools:context="wow.itc.com.wow_itc.FirstTime">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
+    <android.support.v7.widget.Toolbar android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="HouseHold Profile"
-        app:subtitle="*Fields are Mandatory"
-        app:subtitleTextColor="#9e9c9c"
+        app:title="House Profile"
+        app:titleTextColor="#ffffff"
 
-        >
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:subtitle="Please enter to AutoFill Data"
+        android:background="#179556">
 
         <Button
             style="@style/Base.Widget.AppCompat.Button.Borderless"
@@ -42,7 +42,7 @@ android:id="@+id/edit"
     </android.support.v7.widget.Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_marginTop="4dp">
         <TextView
@@ -61,7 +61,7 @@ android:id="@+id/edit"
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
 
         android:orientation="horizontal"
         android:layout_marginTop="4dp">
@@ -90,6 +90,7 @@ android:id="@+id/edit"
         android:hint="Select Ward No."
         android:textColor="#000000"
         android:id="@+id/ward"
+        android:translationY="1dp"
         android:background="@drawable/etborder"
         android:layout_marginTop="4dp"
         />
@@ -105,6 +106,7 @@ android:id="@+id/edit"
             android:id="@+id/wardname"
             android:background="@drawable/etborder"
             android:textColor="#000000"
+            android:translationY="1dp"
             android:layout_marginTop="4dp"
             />
     </android.support.design.widget.TextInputLayout>
@@ -244,6 +246,7 @@ android:layout_weight="0.632"
             android:background="@drawable/etborder"
             android:textColor="#000000"
             android:id="@+id/address"
+            android:translationY="1dp"
             android:layout_marginTop="4dp"
             />
         </android.support.design.widget.TextInputLayout>
@@ -259,6 +262,7 @@ android:layout_weight="0.632"
             android:hint="Enter Phone Number"
             android:id="@+id/phoneno"
             android:textColor="#000000"
+            android:translationY="1dp"
             android:inputType="numberDecimal"
             android:layout_marginTop="4dp"
             tools:ignore="TextFields" />
@@ -277,6 +281,7 @@ android:layout_weight="0.632"
             android:textColor="#000000"
             android:inputType="textEmailAddress"
             android:layout_marginTop="4dp"
+            android:translationY="1dp"
             />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -292,6 +297,7 @@ android:layout_weight="0.632"
             android:inputType="numberDecimal"
             android:id="@+id/householdno"
             android:textColor="#000000"
+            android:translationY="1dp"
             android:layout_marginTop="4dp"
             />
         </android.support.design.widget.TextInputLayout>
@@ -384,6 +390,7 @@ android:layout_weight="0.632"
             android:layout_marginTop="4dp"
             android:background="@drawable/etborder"
             android:textColor="#000000"
+            android:translationY="1dp"
             android:hint="LandMarks"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -398,6 +405,7 @@ android:layout_weight="0.632"
         android:hint="Select PE Name"
         android:layout_marginTop="4dp"
         android:textColor="#000000"
+        android:translationY="1dp"
         android:background="@drawable/etborder"
         android:id="@+id/pename"
         /></android.support.design.widget.TextInputLayout>
@@ -406,6 +414,7 @@ android:layout_weight="0.632"
         android:layout_height="wrap_content"
 android:text="Click Image"
         android:layout_marginTop="4dp"
+        android:background="@drawable/btn_border"
         android:textColor="#000000"
         android:id="@+id/image"/>
     <android.support.design.widget.TextInputLayout
@@ -421,12 +430,14 @@ android:text="Click Image"
         android:layout_marginTop="4dp"
         android:inputType="textMultiLine"
         android:maxLines="4"
+        android:translationY="1dp"
         android:hint="Note"/>
     </android.support.design.widget.TextInputLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SUBMIT"
+        android:background="@drawable/btn_border"
         android:layout_marginTop="4dp"
         android:id="@+id/submit"/>
 </LinearLayout>

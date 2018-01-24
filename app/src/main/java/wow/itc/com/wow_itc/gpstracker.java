@@ -1,5 +1,6 @@
 package wow.itc.com.wow_itc;
 
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,7 +27,7 @@ import java.util.Locale;
 
 public class gpstracker extends Service implements LocationListener {
     private static String TAG = gpstracker.class.getName();
-
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     private final Context mContext;
 
     // flag for GPS Status
@@ -56,6 +57,7 @@ public class gpstracker extends Service implements LocationListener {
 
     // Store LocationManager.GPS_PROVIDER or LocationManager.NETWORK_PROVIDER information
     private String provider_info;
+    private Context activity;
 
     public gpstracker(Context context) {
         this.mContext = context;
@@ -80,6 +82,7 @@ public class gpstracker extends Service implements LocationListener {
     /**
      * Try to get my current location by GPS or Network Provider
      */
+    @SuppressLint("MissingPermission")
     public void getLocation() {
 
         try {
@@ -122,6 +125,10 @@ public class gpstracker extends Service implements LocationListener {
 
             // Application can use GPS or Network Provider
             if (!provider_info.isEmpty()) {
+
+
+
+
                 locationManager.requestLocationUpdates(
                         provider_info,
                         MIN_TIME_BW_UPDATES,
@@ -129,22 +136,23 @@ public class gpstracker extends Service implements LocationListener {
                         this
                 );
 
-                if (locationManager != null) {
-                    location = locationManager.getLastKnownLocation(provider_info);
-                    updateGPSCoordinates();
+                    if (locationManager != null) {
+                        location = locationManager.getLastKnownLocation(provider_info);
+                        updateGPSCoordinates();
+                    }
                 }
             }
+        catch(Exception e)
+            {
+                //e.printStackTrace();
+                Log.e(TAG, "Impossible to connect to LocationManager", e);
+            }
         }
-        catch (Exception e)
-        {
-            //e.printStackTrace();
-            Log.e(TAG, "Impossible to connect to LocationManager", e);
-        }
-    }
 
-    /**
-     * Update GPSTracker latitude and longitude
-     */
+        /**
+         * Update GPSTracker latitude and longitude
+         */
+
     public void updateGPSCoordinates() {
         if (location != null) {
             latitude = location.getLatitude();
@@ -285,6 +293,10 @@ public class gpstracker extends Service implements LocationListener {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    public Context getActivity() {
+        return activity;
     }
 }
 

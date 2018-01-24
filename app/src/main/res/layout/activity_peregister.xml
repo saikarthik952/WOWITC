@@ -6,15 +6,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="wow.itc.com.wow_itc.PERegisterActivity">
+    <android.support.v7.widget.Toolbar android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="PE Registration"
+        app:titleTextColor="#ffffff"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:subtitle="Please enter to AutoFill Data"
+        android:background="#179556"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select NGO"
-
+android:layout_marginTop="10dp"
             android:textSize="20sp"/>
 
         <Spinner
@@ -24,13 +31,14 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_marginTop="4dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select CITY"
+            android:layout_marginTop="10dp"
             android:textSize="20sp"/>
 
         <Spinner
@@ -47,6 +55,7 @@
         android:layout_height="wrap_content"
         android:hint="Select Ward No."
         android:id="@+id/ward"
+        android:translationY="1dp"
         android:background="@drawable/etborder"
         android:layout_marginTop="4dp"
         />
@@ -60,6 +69,7 @@
         android:layout_height="wrap_content"
         android:hint="Select Ward Name"
         android:id="@+id/wardname"
+        android:translationY="1dp"
         android:background="@drawable/etborder"
         android:layout_marginTop="4dp"
         />
@@ -72,6 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Select PE Name"
+        android:translationY="1dp"
         android:background="@drawable/etborder"
         android:layout_marginTop="4dp"
         android:id="@+id/pename"
@@ -82,5 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SUBMIT"
+        android:background="@drawable/btn_border"
+        android:layout_marginTop="30dp"
         android:id="@+id/submit"/>
 </LinearLayout>

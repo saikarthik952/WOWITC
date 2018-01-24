@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.Objects;
+
 public class HubCollectionRegister extends AppCompatActivity {
     SharedPreferences msharedpreferences;
  Button skip;
@@ -22,6 +24,7 @@ public class HubCollectionRegister extends AppCompatActivity {
     Spinner ngo,city;
     int x,y;
 Button b;
+String k;
   //  String[] citydata={"city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,11 @@ Button b;
                 startActivity(m);
             }
         });
+        Bundle m =getIntent().getExtras();
+        // assert i != null;
+        if (m != null) {
+            k= m.getString("editoption");
+        }
         ngo.setAdapter(aa);
         b=findViewById(R.id.submit);
         city=findViewById(R.id.city);
@@ -154,7 +162,14 @@ Button b;
         editor.apply();
       String c=  String.valueOf(msharedpreferences.getAll());
         Log.e("XXX",c);
-        Intent i = new Intent(getApplicationContext(),HouseCheck.class);
-        startActivity(i);
+        if(Objects.equals(k, "editing"))
+        {
+            Intent k= new Intent(getApplicationContext(),HubCollectionActivity.class);
+            startActivity(k);
+        }
+        else {
+            Intent i = new Intent(HubCollectionRegister.this, HouseCheck.class);
+            startActivity(i);
+        }
     }
 }

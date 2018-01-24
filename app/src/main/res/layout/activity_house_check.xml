@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HouseCheck"
-android:background="#fff"
+    android:background="@drawable/plore"
     android:orientation="vertical"
 
 
@@ -13,11 +13,12 @@ android:background="#fff"
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.4">
+        android:alpha="0.2">
        <ImageView
            android:layout_width="match_parent"
            android:layout_height="match_parent"
-           android:src="@drawable/mainbg"/>
+
+           />
     </RelativeLayout>
 <RelativeLayout
     android:layout_width="match_parent"
@@ -30,6 +31,7 @@ android:background="#fff"
         android:gravity="center"
         android:text="House Hold Profile"
         android:layout_above="@+id/followup"
+        android:background="@drawable/btn_border"
 
         />
     <Button
@@ -38,7 +40,9 @@ android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="8dp"
         android:text="Follow Up Propagation"
+        android:background="@drawable/btn_border"
         android:layout_above="@+id/hubcollection"
         />
     <Button
@@ -47,7 +51,9 @@ android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="8dp"
         android:text="Hub Collection Centre"
+        android:background="@drawable/btn_border"
         android:layout_centerInParent="true"
         />
     <Button
@@ -57,17 +63,22 @@ android:background="#fff"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="School"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_border"
         android:layout_below="@+id/hubcollection"
         />
+
     <Button
         android:id="@+id/corporate"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Corporate Collection"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/school"
-        />
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_border"
+        android:gravity="center"
+        android:text="Corporate Collection" />
 
 
 

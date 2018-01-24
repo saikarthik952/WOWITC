@@ -29,7 +29,8 @@
         <activity android:name=".HubCollectionActivity" />
         <activity android:name=".SchoolActivity" />
         <activity android:name=".SchoolVisit" />
-        <activity android:name=".SchoolProp"></activity>
+        <activity android:name=".SchoolProp" />
+        <activity android:name=".VisitedSchools"></activity>
     </application>
 
 </manifest>

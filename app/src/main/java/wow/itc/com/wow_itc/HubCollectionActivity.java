@@ -123,6 +123,14 @@ results= new StringBuilder();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://docs.google.com/forms/u/3/d/e/")
                 .build();
+        findViewById(R.id.edit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),HubCollectionRegister.class);
+                i.putExtra("editoption","editing");
+                startActivity(i);
+            }
+        });
         final HubCollectionInterface spreadsheetWebService = retrofit.create(HubCollectionInterface.class);
         b.setOnClickListener(new View.OnClickListener() {
             @Override

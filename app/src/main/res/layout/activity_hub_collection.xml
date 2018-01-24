@@ -5,21 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="wow.itc.com.wow_itc.HubCollectionRegister">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+        <android.support.v7.widget.Toolbar android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Hub Collection"
+            app:titleTextColor="#ffffff"
 
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:subtitle="Please enter to AutoFill Data"
+            android:background="#179556">
+            <Button
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:text="EDIT"
+                android:id="@+id/edit"
+                android:textSize="16sp" />
+        </android.support.v7.widget.Toolbar>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             android:layout_marginTop="4dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select NGO"
+                android:layout_marginTop="20dp"
                 android:textSize="20sp"/>
 
             <Spinner
@@ -29,13 +48,14 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             android:layout_marginTop="4dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select CITY"
+                android:layout_marginTop="20dp"
                 android:textSize="20sp"/>
 
             <Spinner
@@ -55,6 +75,7 @@
             android:id="@+id/ward"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:translationY="1dp"
             android:background="@drawable/etborder"
             android:layout_marginTop="4dp"
             />
@@ -73,6 +94,7 @@
                 android:imeOptions="actionNext"
                 android:background="@drawable/etborder"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:hint="Name Of The HUB"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -87,6 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
+            android:translationY="1dp"
             android:imeOptions="actionNext"
             android:maxLines="1"
             android:background="@drawable/etborder"
@@ -125,6 +148,7 @@
                 android:maxLines="1"
                 android:background="@drawable/etborder"
                 android:id="@+id/collname"
+                android:translationY="1dp"
                 android:hint="Collection Point Name"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -141,6 +165,7 @@
                 android:inputType="text"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/vehiclenumber"
                 android:hint="Enter Vehicle Number"/>
@@ -167,6 +192,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:id="@+id/dmw"
                 android:background="@drawable/etborder"
                 android:hint="Dry Mixed Waste"/>
@@ -185,6 +211,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/lvpmll"
                 android:hint="LVP/MLL"/>
@@ -203,6 +230,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/colorrecord"
                 android:hint="Color Record"/>
@@ -221,6 +249,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/pet"
                 android:hint="Pet Bottle"/>
@@ -239,6 +268,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/milk"
                 android:hint="Milk Pouches"/>
@@ -257,6 +287,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/hardplstic"
                 android:hint="Hard Plastic"/>
@@ -275,6 +306,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/tetra"
                 android:hint="Tetra Pack"/>
@@ -293,6 +325,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/kraft"
                 android:hint="Kraft"/>
@@ -311,6 +344,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/oldpaper"
                 android:hint="Old Newspaper"/>
@@ -329,6 +363,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/oldmag"
                 android:hint="Old Magazine"/>
@@ -347,6 +382,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/book"
                 android:hint="NoteBooks and Text Books"/>
@@ -365,6 +401,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/whiterec"
                 android:hint="White Records"/>
@@ -383,6 +420,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/iron"
                 android:hint="Metal (Iron)"/>
@@ -401,6 +439,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/aluminium"
                 android:hint="Metal (Aluminuim)"/>
@@ -420,6 +459,7 @@
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:background="@drawable/etborder"
+                android:translationY="1dp"
                 android:id="@+id/tin"
                 android:hint="Tin (Metal Magnet Check)"/>
 
@@ -436,6 +476,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/tinaluminuim"
                 android:hint="Tin (Aluminuim)"/>
@@ -454,6 +495,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/coconut"
                 android:hint="Coconut shell"/>
@@ -472,6 +514,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/materiala"
                 android:hint="Material A"/>
@@ -490,6 +533,7 @@
                 android:inputType="numberDecimal"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:background="@drawable/etborder"
                 android:id="@+id/bottle"
                 android:hint="Beer Bottle (Cost for each)"/>
@@ -508,6 +552,7 @@
                 android:background="@drawable/etborder"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:translationY="1dp"
                 android:id="@+id/supname"
                 android:hint="Supervisor Name"/>
 
@@ -516,6 +561,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SUBMIT"
+            android:background="@drawable/btn_border"
             android:layout_marginTop="4dp"
             android:id="@+id/submit"/>
     </LinearLayout>

@@ -1,5 +1,7 @@
 package wow.itc.com.wow_itc;
 
+import java.io.File;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -27,7 +29,7 @@ public interface HouseHoldFirstTime {
             @Field("entry.2007149968") String EmailID,
             @Field("entry.1819601689") String numberofmembers,
             @Field("entry.1718320059") String wetwastecomposite,
-            @Field("entry.1540133419") String Imagename,
+            @Field("entry.1540133419") File Imagename,
             @Field("entry.1962871546") String Landmark,
             @Field("entry.500783083") String Latitude,
             @Field("entry.616543378") String Longitude,

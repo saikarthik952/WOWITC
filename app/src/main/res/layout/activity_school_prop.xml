@@ -10,7 +10,17 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
+        <android.support.v7.widget.Toolbar android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="School Propagation"
+            app:titleTextColor="#ffffff"
+android:elevation="4dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:subtitle="* Mandatory"
+            android:background="#179556"
+            tools:ignore="UnusedAttribute">
 
+        </android.support.v7.widget.Toolbar>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -57,7 +67,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/areascprop"
-            android:hint="Area Visit"/>
+            android:hint="Area Visit"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
 
@@ -68,6 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/ngoempnamescprop"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"
             android:hint="NGO employee name"/> </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -78,6 +92,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"
             android:hint="No of Students attended"
             android:id="@+id/students_attended"/> </android.support.design.widget.TextInputLayout>
 
@@ -91,11 +107,14 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"
             android:layout_marginTop="4dp">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="IEC issued (Yes/No)"
+
             android:id="@+id/iec"/> </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
 
@@ -106,6 +125,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Other Benefits: "
+            android:translationY="1dp"
+            android:background="@drawable/etborder"
             android:id="@+id/otherbenifits"/>
         </android.support.design.widget.TextInputLayout>
         <LinearLayout
@@ -168,6 +189,8 @@
             android:id="@+id/otherscprop"
             android:layout_height="wrap_content"
             android:hint="Other - Please Specify"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"
             />
 
         </android.support.design.widget.TextInputLayout>
@@ -180,6 +203,8 @@
             android:layout_width="match_parent"
             android:id="@+id/notescprop"
             android:layout_height="wrap_content"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"
             android:hint="Note"
             />
         </android.support.design.widget.TextInputLayout>
@@ -189,10 +214,20 @@
             android:id="@+id/scpropsubmit"
             android:layout_marginTop="4dp"
             android:text="submit"
+            android:background="@drawable/btn_border"
             android:textColor="#000"
             />
 
+        <Button
 
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:text="Saved Schools Propagations"
+            android:id="@+id/edit"
+            android:background="@drawable/btn_border"
+            android:textSize="16sp" />
 
 
     </LinearLayout>

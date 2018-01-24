@@ -10,44 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <android.support.v7.widget.Toolbar android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="School Visit"
+            app:titleTextColor="#ffffff"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:text="Select NGO"
-                android:textSize="20sp"/>
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:subtitle="* Mandatory"
+            android:background="#179556">
 
-            <Spinner
-                android:textColor="#000000"
-                android:layout_width="match_parent"
-                android:layout_height="29dp"
-                android:id="@+id/spinner"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+        </android.support.v7.widget.Toolbar>
 
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp">
-            <TextView
-                android:textColor="#000000"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select CITY"
-                android:textSize="20sp"/>
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="29dp"
-                android:id="@+id/city" />
-        </LinearLayout>
 
         <android.support.design.widget.TextInputLayout
 
@@ -59,7 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/area"
-            android:hint="Area Visit"/>
+            android:hint="Area Visit"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
 
@@ -70,8 +45,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/ngoempname"
-            android:hint="NGO employee name"/>
+            android:hint="NGO employee name"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"/>
         </android.support.design.widget.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="School Confirmed"
+                android:textSize="20sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:textColor="#000"/>
+
+            <CheckBox
+                android:id="@+id/Schoolcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:text="Yes"
+                android:layout_marginStart="55dp"
+
+                />
+        </LinearLayout>
         <android.support.design.widget.TextInputLayout
 
             android:layout_width="match_parent"
@@ -81,7 +83,10 @@
             android:id="@+id/schoolname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/school_name"/>
+            android:hint="@string/school_name"
+
+            android:translationY="1dp"
+            android:background="@drawable/etborder"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
 
@@ -92,6 +97,8 @@
             android:id="@+id/personcontacted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"
             android:hint="@string/name_of_the_person_contacted"
             />
         </android.support.design.widget.TextInputLayout>
@@ -104,6 +111,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"
             android:hint="@string/phone_no"
             android:id="@+id/phone"
             />
@@ -118,6 +127,8 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:id="@+id/mailid"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"
             android:hint="@string/mailid"
             />
         </android.support.design.widget.TextInputLayout>
@@ -131,27 +142,29 @@
             android:layout_height="wrap_content"
             android:id="@+id/studentstrength"
             android:inputType="number"
+            android:translationY="1dp"
+            android:background="@drawable/etborder"
             android:hint="@string/total_no_of_students"
             />
         </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/note"
-            android:id="@+id/notescvisit"/>
-        </android.support.design.widget.TextInputLayout>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SUBMIT"
+            android:background="@drawable/btn_border"
             android:layout_marginTop="4dp"
             android:id="@+id/submit"/>
+        <Button
 
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:text="Saved Schools"
+            android:id="@+id/edit"
+            android:background="@drawable/btn_border"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </ScrollView>

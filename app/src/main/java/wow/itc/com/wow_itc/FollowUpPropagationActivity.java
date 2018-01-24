@@ -30,13 +30,13 @@ public class FollowUpPropagationActivity extends AppCompatActivity {
     Button b,sg,notsg;
     int seg=0,notseg=0;
     //String[] citydata={"city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1"};
-
+    gpstracker gpsTracker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow_up_propagation);
         ngo=findViewById(R.id.spinner);
-        final gpstracker gpsTracker = new gpstracker(this);
+         gpsTracker = new gpstracker(this);
         ArrayAdapter aa = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.ngos));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //Setting the ArrayAdapter data on the Spinner
@@ -62,7 +62,14 @@ notsg=findViewById(R.id.notsg);
         city.setSelection(y);
         ward.setText(wardno);
 
-
+        findViewById(R.id.edit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),PERegisterActivity.class);
+                i.putExtra("editoption","editing");
+                startActivity(i);
+            }
+        });
         ngopename.setText(sharedpreferences.getString("pename",""));
         sg.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")

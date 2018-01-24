@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="wow.itc.com.wow_itc.MainActivity"
-    android:background="@drawable/mainbg">
+    android:background="@drawable/plorebg"
+    >
 
     <TextView
         android:layout_width="wrap_content"
