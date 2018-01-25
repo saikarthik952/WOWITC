@@ -1,5 +1,6 @@
 package wow.itc.com.wow_itc;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -63,7 +64,7 @@ public class DataBaseHelpher extends SQLiteOpenHelper {
         db.insert(STUDENT_TABLE, null, values);
         // 4. close
         db.close();
-        Toast.makeText(context, "insert value", Toast.LENGTH_LONG);
+        Toast.makeText(context, "insert value", Toast.LENGTH_LONG).show();
         Log.i("insert into DB", "After insert");
     }
     /* Retrive  data from database */
@@ -72,7 +73,7 @@ public class DataBaseHelpher extends SQLiteOpenHelper {
         String query = "select * from "+STUDENT_TABLE;
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query,null);
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query,null);
 
         if (cursor.moveToFirst()){
             do {

@@ -1,6 +1,7 @@
 package wow.itc.com.wow_itc;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -35,6 +37,7 @@ import com.android.volley.toolbox.Volley;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +45,8 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
+
+import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE;
 
 public class FirstTime extends AppCompatActivity {
     Spinner ngo, city;
@@ -115,18 +120,16 @@ public class FirstTime extends AppCompatActivity {
         final HouseHoldFirstTime spreadsheetWebService = retrofit.create(HouseHoldFirstTime.class);
         image.setVisibility(View.GONE);
         note.setVisibility(View.GONE);
-        final int MY_CAMERA_REQUEST_CODE = 100;
+       // final int MY_CAMERA_REQUEST_CODE = 100;
 
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent photo = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                @SuppressLint("SdCardPath") Uri uri= Uri.parse("file:///sdcard/photo.jpg");
+                photo.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, uri);
+                startActivityForResult(photo,1);
 
-
-                //    String pathMedia = Environment.getExternalStorageDirectory().getAbsolutePath() + "/MyImages/image_001.png";
-                //   Uri uriSavedImage = Uri.fromFile(new File(pathMedia));
-                Intent imageIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                startActivityForResult(imageIntent, 1);
             }
         });
         findViewById(R.id.edit).setOnClickListener(new View.OnClickListener() {
@@ -267,9 +270,9 @@ public class FirstTime extends AppCompatActivity {
             protected Map<String, String> getParams(){
                 Map<String,String> params = new HashMap<>();
                 params.put("action","insert");
-                params.put("uId","PE NAme");
-                params.put("uName","House Holdd Name");
-                params.put("uImage","Hello");
+                params.put("uId",spename);
+                params.put("uName",shouseholdname);
+                params.put("uImage",userImage);
 
                 return params;
             }
@@ -293,7 +296,7 @@ public class FirstTime extends AppCompatActivity {
 
 
         @Override
-        public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
+        public void onResponse(@NonNull Call<Void> call, @NonNull retrofit2.Response<Void> response) {
             Log.d("XXX", "Submitted. " + response);
             md.setTitle("Submitted");
             md.dismiss();
@@ -313,44 +316,36 @@ public class FirstTime extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePath = data.getData();
-            try {
-                //Getting the Bitmap from Gallery
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                rbitmap = getResizedBitmap(bitmap);//Setting the Bitmap to ImageView
-                userImage = getStringImage(rbitmap);
+      super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                File file = new File(Environment.getExternalStorageDirectory().getPath(), "photo.jpg");
+                Uri uri = Uri.fromFile(file);
+                Bitmap bitmap;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                    //bitmap = crupAndScale(bitmap, 300); // if you mind scaling
+                   // pofileImageView.setImageBitmap(bitmap);
+                  //  mBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+                    //bmp = (Bitmap) data.getExtras().get("data");
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
-            } catch (IOException e) {
-                e.printStackTrace();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream);
+
+                    byte[] byteArray = stream.toByteArray();
+                    userImage=Base64.encodeToString(byteArray, Base64.DEFAULT);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
             }
         }
-    }
-    public Bitmap getResizedBitmap(Bitmap image) {
-        int width = image.getWidth();
-        int height = image.getHeight();
 
-        float bitmapRatio = (float)width / (float) height;
-        if (bitmapRatio > 1) {
-            width = 250;
-            height = (int) (width / bitmapRatio);
-        } else {
-            height = 250;
-            width = (int) (height * bitmapRatio);
-        }
-        return Bitmap.createScaledBitmap(image, width, height, true);
 
     }
 
 
-    public String getStringImage(Bitmap bmp) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageBytes = baos.toByteArray();
-String x=Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        return x;
-    }
+
 
 }
-

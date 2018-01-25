@@ -1,7 +1,6 @@
 package wow.itc.com.wow_itc;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-
-
 
 import java.util.ArrayList;
 
@@ -21,8 +18,7 @@ public class SchoolVisit extends AppCompatActivity {
     public EditText phone;
     public EditText mail;
     public CheckBox scconfirm;
- SharedPreferences msharedpreferences;
- SharedPreferences.Editor editor;
+
     public EditText studentstrength;
 
     public EditText note;
