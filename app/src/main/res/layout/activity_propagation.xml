@@ -2,17 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="wow.itc.com.wow_itc.VisitedSchools">
+    tools:context="wow.itc.com.wow_itc.PropagationActivity">
     <android.support.v7.widget.Toolbar android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="Visited Schools"
+        app:title="Propagated Schools"
         app:titleTextColor="#ffffff"
 
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        app:subtitle="Click on School to Get Propagation Form"
+        app:subtitle="Click on School to Get ISRC Form"
         android:background="#179556">
 
     </android.support.v7.widget.Toolbar>

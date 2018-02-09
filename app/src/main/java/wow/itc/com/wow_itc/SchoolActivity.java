@@ -31,7 +31,7 @@ public class SchoolActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent in = new Intent(SchoolActivity.this,SchoolProp.class);
+                Intent in = new Intent(SchoolActivity.this,VisitedSchools.class);
                 startActivity(in);
             }
         });
@@ -40,10 +40,17 @@ public class SchoolActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-              //  Intent in = new Intent(SchoolActivity.this,Schoolisrc.class);
-               // startActivity(in);
+               Intent in = new Intent(SchoolActivity.this,PropagationActivity.class);
+               startActivity(in);
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent i= new Intent(SchoolActivity.this,HouseCheck.class);
+        startActivity(i);
+        finish();
     }
+}
 

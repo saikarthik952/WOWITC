@@ -3,23 +3,14 @@ package wow.itc.com.wow_itc;
 import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Karthik on 1/10/2018.
@@ -47,10 +38,10 @@ public class gpstracker extends Service implements LocationListener {
     int geocoderMaxResults = 1;
 
     // The minimum distance to change updates in meters
-    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 8; // 10 meters
 
     // The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
+    private static final long MIN_TIME_BW_UPDATES = 60000; // 1 minute
 
     // Declaring a Location Manager
     protected LocationManager locationManager;
@@ -82,6 +73,7 @@ public class gpstracker extends Service implements LocationListener {
     /**
      * Try to get my current location by GPS or Network Provider
      */
+
     @SuppressLint("MissingPermission")
     public void getLocation() {
 
@@ -197,73 +189,16 @@ public class gpstracker extends Service implements LocationListener {
      * Stop using GPS listener
      * Calling this method will stop using GPS in your app
      */
-    public void stopUsingGPS() {
-        if (locationManager != null) {
-            locationManager.removeUpdates(gpstracker.this);
-        }
-    }
+
 
     /**
      * Function to show settings alert dialog
      */
-    public void showSettingsAlert() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
 
-        //Setting Dialog Title
-        alertDialog.setTitle("Enable GPS");
-
-        //Setting Dialog Message
-        alertDialog.setMessage("Please Enable");
-
-        //On Pressing Setting button
-        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                mContext.startActivity(intent);
-            }
-        });
-
-        //On pressing cancel button
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                dialog.cancel();
-            }
-        });
-
-        alertDialog.show();
-    }
 
     /**
      * Get list of address by latitude and longitude
      * @return null or List<Address>
-     */
-    public List<Address> getGeocoderAddress(Context context) {
-        if (location != null) {
-
-            Geocoder geocoder = new Geocoder(context, Locale.ENGLISH);
-
-            try {
-                /**
-                 * Geocoder.getFromLocation - Returns an array of Addresses
-                 * that are known to describe the area immediately surrounding the given latitude and longitude.
-                 */
-                List<Address> addresses = geocoder.getFromLocation(latitude, longitude, this.geocoderMaxResults);
-
-                return addresses;
-            } catch (IOException e) {
-                //e.printStackTrace();
-                Log.e(TAG, "Impossible to connect to Geocoder", e);
-            }
-        }
-
-        return null;
-    }
 
     /**
      * Try to get AddressLine
@@ -295,8 +230,6 @@ public class gpstracker extends Service implements LocationListener {
         return null;
     }
 
-    public Context getActivity() {
-        return activity;
-    }
+
 }
 

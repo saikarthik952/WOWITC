@@ -12,20 +12,21 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Objects;
 
 public class HubCollectionRegister extends AppCompatActivity {
     SharedPreferences msharedpreferences;
  Button skip;
-//    String[] ngodata={"NGO-1","NGO-2","NGO-3","NGO-4","NGO-5","NGO-6","Others Please Specify"};
+
     EditText wardno,nameofhub,collectionpointname,dmw,lvp,colorrec,petbot,milk,hardplastic,tetra,kraft,oldpapaer,oldmag,notebook,whiterec,iron,aluminium,tin,tinaluminium,coconut,materilaa,beerbottle,hubsupname;
     float fdmw,flvp,fcolorrec,fpetbot,fmilk,fhardplastic,ftetra,fkraft,foldpapaer,foldmag,fnotebook,fwhiterec,firon,faluminium,ftin,ftinaluminium,fcoconut,fmaterilaa,fbeerbottle;
     Spinner ngo,city;
     int x,y;
 Button b;
 String k;
-  //  String[] citydata={"city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +105,19 @@ String k;
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedsrat();
+
+
+               if(check(wardno)|| check(nameofhub)|| check(collectionpointname)|| check(dmw)|| check(lvp)||
+                       check(colorrec)||check(petbot)|| check(milk)||check(hardplastic)||check(tetra)||
+                       check(kraft)||check(oldpapaer)||check(oldmag)||check(notebook)||check(whiterec)||
+                       check(iron)||check(aluminium)||check(tin)||check(tinaluminium)||check(coconut)||check(materilaa)
+                       ||check(beerbottle)||check(hubsupname))
+               {
+                   Toast.makeText(HubCollectionRegister.this,"All Fields are mandatory \n You can Skip if you dont Want to Fill Details",Toast.LENGTH_LONG).show();
+               }else {
+
+                   sharedsrat();
+               }
             }
         });
     }
@@ -112,8 +125,6 @@ String k;
     @SuppressLint("UseValueOf")
     private void sharedsrat() {
         msharedpreferences=getApplicationContext().getSharedPreferences("HUB",MODE_PRIVATE);
-
-
         SharedPreferences.Editor editor=msharedpreferences.edit();
         editor.putInt("ngo",x);
         editor.putInt("city",y);
@@ -172,4 +183,14 @@ String k;
             startActivity(i);
         }
     }
+    public boolean check(EditText edt)
+    {
+
+        if(edt.getText().toString().isEmpty()) {
+            edt.setError("Field should not be empty");
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="wow.itc.com.wow_itc.SchoolISRC">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="ExtraText,HardcodedText"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+
+        tools:context="wow.itc.com.wow_itc.FirstTime">
+
+        <android.support.v7.widget.Toolbar android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="School - ISRC"
+            app:titleTextColor="#ffffff"
+
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:subtitle="Please enter to AutoFill Data"
+            android:background="#179556">
+
+            <Button
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:text="EDIT"
+                android:id="@+id/edit"
+                android:textSize="16sp" />
+        </android.support.v7.widget.Toolbar>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="Select NGO"
+                android:textSize="20sp"/>
+
+            <Spinner
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:id="@+id/spinner"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+            <TextView
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select CITY"
+                android:textSize="20sp"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:id="@+id/city" />
+        </LinearLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/datescisrc"
+                android:translationY="1dp"
+                android:background="@drawable/etborder"
+                android:hint="Date"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:translationY="1dp"
+                android:background="@drawable/etborder"
+                android:hint="No of Students attended"
+                android:id="@+id/students_attended"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:translationY="1dp"
+                android:background="@drawable/etborder"
+                android:hint="Quantity collected (in KG's)"
+                android:id="@+id/quantitycollected"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:translationY="1dp"
+                android:background="@drawable/etborder"
+                android:hint="Green Champion"
+                android:id="@+id/greenchampion"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:translationY="1dp"
+                android:background="@drawable/etborder"
+                android:hint="Amount Collected by Green Champion"
+                android:id="@+id/greenchampcollected"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:translationY="1dp"
+                android:background="@drawable/etborder"
+                android:hint="Value of material exchanged"
+                android:id="@+id/valueofmaterialexchanged"/>
+        </android.support.design.widget.TextInputLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/schoolpropimage"
+            android:layout_marginTop="4dp"
+            android:text="Click Image"
+            android:background="@drawable/btn_border"
+            android:textColor="#000"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scisrcsubmit"
+            android:layout_marginTop="4dp"
+            android:text="submit"
+            android:background="@drawable/btn_border"
+            android:textColor="#000"
+            />
+
+
+
+    </LinearLayout>
+
+</ScrollView>
+

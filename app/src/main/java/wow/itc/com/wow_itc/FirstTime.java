@@ -37,7 +37,6 @@ import com.android.volley.toolbox.Volley;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,24 +45,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 
-import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE;
-
 public class FirstTime extends AppCompatActivity {
     Spinner ngo, city;
-    Bitmap rbitmap;
-    Button b, edit;
+
+    Button b;
     String userImage;
     ProgressDialog md;
     RadioGroup door, interest, wetwaste, bagissue, check;
-    LinearLayout linearLayout;
+    LinearLayout linearLayout,lfd;
     String sdoor = "", sinterest = "", swetwaste = "", sbagiisue = "", scheck = "", mg;
     SharedPreferences sharedpreferences;
     Button image;
     EditText wardno, wardname, pename, householdcount, householdname, householdaddress, householdemail, householdnumber, landmarks, note;
     gpstracker gpsTracker;
-    int srnum;
+
     String lat, longitude, ngom, citym, swardno, swardname, spename, shouseholdcount, shouseholdname, shouseholdaddress, shouseholdemail, shouseholdnumber, slandmarks, snote;
-    File images;
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +75,17 @@ public class FirstTime extends AppCompatActivity {
           gpsTracker = new gpstracker(this);
         linearLayout = (LinearLayout) findViewById(R.id.houseid);
         linearLayout.setVisibility(View.GONE);
+        lfd=findViewById(R.id.lfp);
+        city = findViewById(R.id.city);
         @SuppressLint("ResourceType") ArrayAdapter<String> aa = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ngos));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //Setting the ArrayAdapter data on the Spinner
         ngo.setAdapter(aa);
-        b = findViewById(R.id.submit);
-        city = findViewById(R.id.city);
+
         ArrayAdapter<String> bb = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.cities));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         city.setAdapter(bb);
-
+        b = findViewById(R.id.submit);
         pename = findViewById(R.id.pename);
         wardno = findViewById(R.id.ward);
         wardname = findViewById(R.id.wardname);
@@ -120,7 +118,7 @@ public class FirstTime extends AppCompatActivity {
         final HouseHoldFirstTime spreadsheetWebService = retrofit.create(HouseHoldFirstTime.class);
         image.setVisibility(View.GONE);
         note.setVisibility(View.GONE);
-       // final int MY_CAMERA_REQUEST_CODE = 100;
+
 
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,9 +145,11 @@ public class FirstTime extends AppCompatActivity {
                     sdoor = "not selected";
                 } else if (checkedId == R.id.dooryes) {
                     sdoor = "Yes";
-                    image.setVisibility(View.GONE);
-                    note.setVisibility(View.GONE);
-                    linearLayout.setVisibility(View.GONE);
+               image.setVisibility(View.GONE);
+                 note.setVisibility(View.GONE);
+           linearLayout.setVisibility(View.GONE);
+           lfd.setVisibility(View.GONE);
+           householdaddress.setVisibility(View.VISIBLE);
                 } else if (checkedId == R.id.doorno) {
                     sdoor = "No";
                     image.setVisibility(View.VISIBLE);
@@ -228,8 +228,8 @@ public class FirstTime extends AppCompatActivity {
                         shouseholdnumber = householdnumber.getText().toString();
                         shouseholdaddress = householdaddress.getText().toString();
                         drivesend();
-                        // bags=nobags.getText().toString();
-                        //wardnos=ward.getText().toString();
+                        String ik=spename+"_"+householdname+".jpeg";
+
                         ngom = ngo.getSelectedItem().toString();
                         citym = city.getSelectedItem().toString();
                         snote = note.getText().toString();
@@ -238,7 +238,7 @@ public class FirstTime extends AppCompatActivity {
                             longitude = String.valueOf(gpsTracker.getLongitude());
                             Call<Void> completeQuestionnaireCall = spreadsheetWebService.completeQuestionnaire(ngom, citym, swardno, swardname
                                     , sdoor, sinterest, scheck, spename, shouseholdname, shouseholdaddress, shouseholdnumber,
-                                    shouseholdemail, shouseholdcount, swetwaste, images, slandmarks, lat, longitude, snote);
+                                    shouseholdemail, shouseholdcount, swetwaste, ik, slandmarks, lat, longitude, snote);
 
                             completeQuestionnaireCall.enqueue(callCallback);
                         }
@@ -251,7 +251,7 @@ public class FirstTime extends AppCompatActivity {
 
     private void drivesend() {
         Log.e("null","values"+userImage);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,"https://script.google.com/macros/s/AKfycbz_B6U2b8BSVqRbASP8q_lPq1KM4nV7IXnLcFfWIGNnXSeU5Thx/exec",
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,"https://script.google.com/macros/s/AKfycbw1fIzSwPdK_2A4mxE5SjLZCeZVz54aq-WecGHzRb8d2PKvMvAY/exec",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -324,10 +324,7 @@ public class FirstTime extends AppCompatActivity {
                 Bitmap bitmap;
                 try {
                     bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                    //bitmap = crupAndScale(bitmap, 300); // if you mind scaling
-                   // pofileImageView.setImageBitmap(bitmap);
-                  //  mBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
-                    //bmp = (Bitmap) data.getExtras().get("data");
+
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream);

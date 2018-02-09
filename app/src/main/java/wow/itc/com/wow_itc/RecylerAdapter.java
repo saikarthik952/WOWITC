@@ -21,7 +21,7 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
     static List<Visit> dbList;
     static Context context;
     RecylerAdapter(Context context, List<Visit> dbList ){
-        RecylerAdapter.dbList = new ArrayList<Visit>();
+        RecylerAdapter.dbList = new ArrayList<>();
         RecylerAdapter.context = context;
         RecylerAdapter.dbList = dbList;
 
@@ -69,9 +69,10 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.ViewHold
             extras.putInt("position",getAdapterPosition());
             intent.putExtras(extras);
 
-            /*
-            int i=getAdapterPosition();
-            intent.putExtra("position", getAdapterPosition());*/
+
+
+            //int i=getAdapterPosition();
+            //intent.putExtra("position", getAdapterPosition());
             context.startActivity(intent);
             Toast.makeText(RecylerAdapter.context, "you have clicked Row " + getAdapterPosition(), Toast.LENGTH_LONG).show();
         }

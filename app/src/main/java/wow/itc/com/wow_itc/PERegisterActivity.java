@@ -24,9 +24,9 @@ public class PERegisterActivity extends AppCompatActivity {
 
     String k;
    int a,bx;
-  // String[] ngodata={"NGO-1","NGO-2","NGO-3","NGO-4","NGO-5","NGO-6","Others Please Specify"};
+
 Button b;
-   //String[] citydata={"city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1"};
+
     @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ b=findViewById(R.id.submit);
 
 wardname=findViewById(R.id.wardname);
                         ward=findViewById(R.id.ward);
+
 
         sharedpreferences   = getSharedPreferences("DATAPE", Context.MODE_PRIVATE);
         pename.setText(sharedpreferences.getString("pename",""));
@@ -91,32 +92,45 @@ b.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         pe=pename.getText().toString();
-//        nme=name.getText().toString();
+
+
         wardno=ward.getText().toString();
         swardname=wardname.getText().toString();
-      //  bags=nobags.getText().toString();
-   editor.putString("pename",pe);
 
-        editor.putString("wardno",wardno);
-        editor.putInt("NGO",a);
-        editor.putInt("City",bx);
-        editor.putString("wardname",swardname);
-        editor.apply();
-        Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG).show();
-if(Objects.equals(k, "editing"))
+if(check(pename) || check(ward) || check(wardname))
 {
-    Intent k= new Intent(getApplicationContext(),FirstTime.class);
-    startActivity(k);
+    Toast.makeText(PERegisterActivity.this,"Fields are Mandatory",Toast.LENGTH_LONG).show();
 }
 else {
-    Intent i = new Intent(PERegisterActivity.this, HubCollectionRegister.class);
-    startActivity(i);
-}
 
+    editor.putString("pename", pe);
+    editor.putString("wardno", wardno);
+    editor.putInt("NGO", a);
+    editor.putInt("City", bx);
+    editor.putString("wardname", swardname);
+    editor.apply();
+    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+    if (Objects.equals(k, "editing")) {
+        Intent k = new Intent(getApplicationContext(), FirstTime.class);
+        startActivity(k);
+    } else {
+        Intent i = new Intent(PERegisterActivity.this, HubCollectionRegister.class);
+        startActivity(i);
+    }
+}
     }
 });
 
     }
+   public boolean check(EditText edt)
+   {
+
+       if(edt.getText().toString().isEmpty()) {
+           edt.setError("Field should not be empty");
+           return true;
+       }
+       return false;
+   }
 
 
     }

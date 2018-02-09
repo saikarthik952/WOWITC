@@ -20,11 +20,13 @@ public class MainActivity extends AppCompatActivity {
     int flag = 0;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
      SharedPreferences m;
+     int x;
    SharedPreferences.Editor k;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         if (Build.VERSION.SDK_INT >= 23) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]
                     {
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         }
 
 
@@ -48,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case REQUEST_CODE_ASK_PERMISSIONS:
                 if (grantResults.length > 0 ) {
-
+//isNetworkConnectionAvailable();
                     Toast.makeText(this, "ALl PErmitted", Toast.LENGTH_LONG).show();
                     m = getPreferences(MODE_PRIVATE);
                     flag = m.getInt("flag", 0);
                     k = m.edit();
-                    if (flag == 0) {
+                    if (flag ==0) {
                         flag = 1;
                         k.putInt("flag", flag);
                         k.apply();

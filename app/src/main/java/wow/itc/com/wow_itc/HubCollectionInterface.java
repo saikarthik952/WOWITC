@@ -45,19 +45,4 @@ public interface HubCollectionInterface {
             @Field("entry.1230304692") String latitude,
             @Field("entry.1108470814") String longitude
 
-    );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
+    );}

@@ -5,17 +5,21 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 public class HouseCheck extends AppCompatActivity {
     public Button house,followup,school,corporate,hubcollection;
-gpstracker gpsTracker;
+
+int x;
     boolean statusOfGPS;
     Activity mContext = HouseCheck.this;
     @Override
@@ -31,10 +35,11 @@ gpstracker gpsTracker;
         if (manager != null) {
             statusOfGPS = manager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         }
-        // gpsTracker.showSettingsAlert();
+
+        isNetworkConnectionAvailable();
         if(statusOfGPS)
         {
-            Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"GPS ALLOWED",Toast.LENGTH_LONG).show();
         }else {
             showSettingsAlert();
         }
@@ -66,6 +71,13 @@ gpstracker gpsTracker;
                 startActivity(k);
             }
         });
+        corporate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HouseCheck.this,CorporateCheck.class));
+                finish();
+            }
+        });
     }
     public void showSettingsAlert() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
@@ -95,13 +107,52 @@ gpstracker gpsTracker;
             public void onClick(DialogInterface dialog, int which)
             {
                 dialog.cancel();
+                System.exit(0);
             }
         });
 
         alertDialog.show();
     }
 
+    public void checkNetworkConnection(){
+        android.app.AlertDialog.Builder builder =new android.app.AlertDialog.Builder(this);
+        builder.setTitle("No internet Connection");
+        builder.setMessage("Please turn on internet connection to continue");
+        builder.setCancelable(false);
+        builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                System.exit(0);
+            }
+        });
+        builder.setPositiveButton("Turn on", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
+            }
+        });
+        android.app.AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 
+    public void isNetworkConnectionAvailable(){
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnected();
+        if(isConnected) {
+            Log.d("Network", "Connected");
+            x=1;
+        }
+        else{
+            checkNetworkConnection();
+            Log.d("Network","Not Connected");
+            x=2;
+        }
+    }
     @Override
     public void onBackPressed() {
         //super.onBackPressed();

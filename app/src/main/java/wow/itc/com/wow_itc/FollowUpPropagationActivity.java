@@ -26,10 +26,10 @@ public class FollowUpPropagationActivity extends AppCompatActivity {
     String lat,longitude;
 
     int a,bx;
-    //String[] ngodata={"NGO-1","NGO-2","NGO-3","NGO-4","NGO-5","NGO-6","Others Please Specify"};
+
     Button b,sg,notsg;
     int seg=0,notseg=0;
-    //String[] citydata={"city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1","city-1"};
+
     gpstracker gpsTracker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

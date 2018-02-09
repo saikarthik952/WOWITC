@@ -48,6 +48,7 @@ public ArrayList<Visit> vx;
         ngoempname = (EditText) findViewById(R.id.ngoempname);
         schoolvisitsubmit =  findViewById(R.id.submit);
         saved=findViewById(R.id.edit);
+        helpher = new DataBaseHelpher(SchoolVisit.this);
         saved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,12 +61,14 @@ public ArrayList<Visit> vx;
             public void onClick(View v) {
 Log.d("XXX","Clicekd");
                 Visit visit= new Visit();
-
+String ngoemp;
+ngoemp=ngoempname.getText().toString();
                 String h;
                 String m=person.getText().toString();
                // Log.e("xxx",visit.setPersoname(person.getText().toString())
 String s= scname.getText().toString();
                 //);
+                String are=area.getText().toString();
                String k=mail.getText().toString();
                 String o=phone.getText().toString();
                 if(scconfirm.isChecked())
@@ -76,8 +79,8 @@ String s= scname.getText().toString();
                     h="No";
                 }
                String a=studentstrength.getText().toString();
-                helpher = new DataBaseHelpher(SchoolVisit.this);
-                helpher.insertIntoDB(m, k, o, s, h,a);
+
+                helpher.insertIntoDB(m, k, o, s, h,a,are,ngoemp);
             }
         });
     }

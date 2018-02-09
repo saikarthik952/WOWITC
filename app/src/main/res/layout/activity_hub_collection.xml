@@ -255,6 +255,7 @@
                 android:hint="Pet Bottle"/>
 
         </android.support.design.widget.TextInputLayout>
+
         <android.support.design.widget.TextInputLayout
 
             android:layout_width="match_parent"
@@ -263,15 +264,15 @@
 
             <EditText
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:imeOptions="actionNext"
-                android:maxLines="1"
-                android:translationY="1dp"
-                android:background="@drawable/etborder"
                 android:id="@+id/milk"
-                android:hint="Milk Pouches"/>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/etborder"
+                android:hint="Milk Pouches"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:translationY="1dp" />
 
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -557,12 +558,28 @@
                 android:hint="Supervisor Name"/>
 
         </android.support.design.widget.TextInputLayout>
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SUBMIT"
-            android:background="@drawable/btn_border"
-            android:layout_marginTop="4dp"
-            android:id="@+id/submit"/>
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="REVIEW DATA"
+                android:layout_weight="0.5"
+                android:background="@drawable/btn_border"
+                android:layout_marginTop="4dp"
+                android:id="@+id/datareview"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SUBMIT"
+               android:layout_weight="0.5"
+                android:background="@drawable/btn_border"
+                android:layout_marginTop="4dp"
+                android:id="@+id/submit"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

@@ -5,24 +5,11 @@ package wow.itc.com.wow_itc;
  */
 
 public class Propagation {
-    private String personame,phonenumber,email,schoolconfirmed,strength,attened,IEC,otherbenifits,tree,water,others,note;
+    private String typeofprop,ngoempname,areavisit,personame,schoolname,phonenumber,email,schoolconfirmed,strength,attened,IEC,otherbenifits,tree,water,wowclub,numofstudents;
     Propagation()
     {}
 
-    public Propagation(String personame, String phonenumber, String email, String schoolconfirmed, String strength, String attened, String IEC, String otherbenifits, String tree, String water, String others, String note) {
-        this.personame = personame;
-        this.phonenumber = phonenumber;
-        this.email = email;
-        this.schoolconfirmed = schoolconfirmed;
-        this.strength = strength;
-        this.attened = attened;
-        this.IEC = IEC;
-        this.otherbenifits = otherbenifits;
-        this.tree = tree;
-        this.water = water;
-        this.others = others;
-        this.note = note;
-    }
+
 
     public String getPersoname() {
         return personame;
@@ -104,19 +91,53 @@ public class Propagation {
         this.water = water;
     }
 
-    public String getOthers() {
-        return others;
+
+
+    public String getAreavisit() {
+        return areavisit;
     }
 
-    public void setOthers(String others) {
-        this.others = others;
+    public void setAreavisit(String areavisit) {
+        this.areavisit = areavisit;
     }
 
-    public String getNote() {
-        return note;
+    public String getSchoolname() {
+        return schoolname;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setSchoolname(String schoolname) {
+        this.schoolname = schoolname;
+    }
+
+    public String getWowclub() {
+        return wowclub;
+    }
+
+    public void setWowclub(String wowclub) {
+        this.wowclub = wowclub;
+    }
+
+    public String getNumofstudents() {
+        return numofstudents;
+    }
+
+    public void setNumofstudents(String numofstudents) {
+        this.numofstudents = numofstudents;
+    }
+
+    public String getNgoempname() {
+        return ngoempname;
+    }
+
+    public void setNgoempname(String ngoempname) {
+        this.ngoempname = ngoempname;
+    }
+
+    public String getTypeofprop() {
+        return typeofprop;
+    }
+
+    public void setTypeofprop(String typeofprop) {
+        this.typeofprop = typeofprop;
     }
 }

@@ -189,12 +189,14 @@ android:layout_weight="0.632"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="4dp">
+    android:layout_marginTop="4dp"
+    android:id="@+id/lfp">
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/check"
+
         tools:ignore="UselessParent">
         <RadioButton
             android:layout_width="wrap_content"
@@ -234,22 +236,7 @@ android:layout_weight="0.632"
             android:id="@+id/name"
             />
         </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
 
-            android:layout_width="match_parent"
-            android:layout_marginTop="4dp"
-            android:layout_height="wrap_content">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Address"
-            android:background="@drawable/etborder"
-            android:textColor="#000000"
-            android:id="@+id/address"
-            android:translationY="1dp"
-            android:layout_marginTop="4dp"
-            />
-        </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
 
             android:layout_width="match_parent"
@@ -301,6 +288,7 @@ android:layout_weight="0.632"
             android:layout_marginTop="4dp"
             />
         </android.support.design.widget.TextInputLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -378,11 +366,29 @@ android:layout_weight="0.632"
                     android:id="@+id/wasteno"/>
             </RadioGroup>
         </LinearLayout>
-        <android.support.design.widget.TextInputLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp">
+    </LinearLayout>
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Address"
+        android:background="@drawable/etborder"
+        android:textColor="#000000"
+        android:id="@+id/address"
+        android:translationY="1dp"
+        android:layout_marginTop="4dp"
+        />
+</android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -392,8 +398,7 @@ android:layout_weight="0.632"
             android:textColor="#000000"
             android:translationY="1dp"
             android:hint="LandMarks"/>
-        </android.support.design.widget.TextInputLayout>
-    </LinearLayout>
+    </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
 
         android:layout_width="match_parent"

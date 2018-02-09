@@ -49,31 +49,7 @@
             android:translationY="1dp"
             android:background="@drawable/etborder"/>
         </android.support.design.widget.TextInputLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="School Confirmed"
-                android:textSize="20sp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:textColor="#000"/>
-
-            <CheckBox
-                android:id="@+id/Schoolcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:text="Yes"
-                android:layout_marginStart="55dp"
-
-                />
-        </LinearLayout>
         <android.support.design.widget.TextInputLayout
 
             android:layout_width="match_parent"
@@ -147,7 +123,31 @@
             android:hint="@string/total_no_of_students"
             />
         </android.support.design.widget.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="School Confirmed"
+                android:textSize="20sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:textColor="#000"/>
+
+            <CheckBox
+                android:id="@+id/Schoolcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:text="Yes"
+                android:layout_marginStart="55dp"
+
+                />
+        </LinearLayout>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

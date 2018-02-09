@@ -1,38 +1,36 @@
 package wow.itc.com.wow_itc;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VisitedSchools extends AppCompatActivity {
-Context context;
+public class PropagationActivity extends AppCompatActivity {
     DataBaseHelpher helpher;
-    List<Visit> dbList;
+    List<Propagation> dbList;
     RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
+Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visited_schools);
-
+        setContentView(R.layout.activity_propagation);
         helpher = new DataBaseHelpher(this);
-        dbList= new ArrayList<Visit>();
-        dbList = helpher.getDataFromDB();
+        dbList= new ArrayList<>();
+        dbList = helpher.propdata();
         mRecyclerView = (RecyclerView)findViewById(R.id.recycleview);
-
+context=PropagationActivity.this;
         mRecyclerView.setHasFixedSize(true);
-context=VisitedSchools.this;
+
         // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(context);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        RecyclerView.Adapter mAdapter = new RecylerAdapter(context, dbList);
+        RecyclerView.Adapter mAdapter = new SavedPropagation(context, dbList);
         mRecyclerView.setAdapter(mAdapter);
     }
 }

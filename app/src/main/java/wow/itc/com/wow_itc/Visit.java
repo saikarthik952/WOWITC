@@ -11,6 +11,9 @@ public class Visit {
     private String personame;
     private String phonenumber;
     private String email;
+    private String schoolname;
+    private String schoolconfirmed;
+    private String strength,areavisit,ngoname;
 
     public Visit(String personame, String phonenumber, String email, String schoolname, String schoolconfirmed, String strength) {
         this.personame = personame;
@@ -29,9 +32,7 @@ public class Visit {
         this.schoolname = schoolname;
     }
 
-    private String schoolname;
-    private String schoolconfirmed;
-    private String strength;
+
 
 
 
@@ -73,5 +74,21 @@ public class Visit {
 
     public void setStrength(String strength) {
         this.strength = strength;
+    }
+
+    public String getAreavisit() {
+        return areavisit;
+    }
+
+    public void setAreavisit(String areavisit) {
+        this.areavisit = areavisit;
+    }
+
+    public String getNgoname() {
+        return ngoname;
+    }
+
+    public void setNgoname(String ngoname) {
+        this.ngoname = ngoname;
     }
 }
