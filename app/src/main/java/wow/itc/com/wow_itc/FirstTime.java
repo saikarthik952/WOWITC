@@ -148,7 +148,7 @@ public class FirstTime extends AppCompatActivity {
                image.setVisibility(View.GONE);
                  note.setVisibility(View.GONE);
            linearLayout.setVisibility(View.GONE);
-           lfd.setVisibility(View.GONE);
+
            householdaddress.setVisibility(View.VISIBLE);
                 } else if (checkedId == R.id.doorno) {
                     sdoor = "No";
@@ -228,7 +228,7 @@ public class FirstTime extends AppCompatActivity {
                         shouseholdnumber = householdnumber.getText().toString();
                         shouseholdaddress = householdaddress.getText().toString();
                         drivesend();
-                        String ik=spename+"_"+householdname+".jpeg";
+                        String ik=spename+"_"+shouseholdname+".jpeg";
 
                         ngom = ngo.getSelectedItem().toString();
                         citym = city.getSelectedItem().toString();
@@ -300,6 +300,7 @@ public class FirstTime extends AppCompatActivity {
             Log.d("XXX", "Submitted. " + response);
             md.setTitle("Submitted");
             md.dismiss();
+          /// public  AlertDialog kk = new AlertDialog(FirstTime.this);
             Intent lp = getIntent();
             lp.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             finish();
@@ -342,7 +343,8 @@ public class FirstTime extends AppCompatActivity {
 
     }
 
-
-
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(FirstTime.this,HouseCheck.class));
+    }
 }

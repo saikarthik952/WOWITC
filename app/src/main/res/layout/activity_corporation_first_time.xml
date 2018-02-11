@@ -171,10 +171,11 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/nooflocs"
                 android:translationY="1dp"
+                android:inputType="number"
                 android:background="@drawable/etborder"
                 android:hint="How many locations in city"/>
         </android.support.design.widget.TextInputLayout>
-
+<!---
         <android.support.design.widget.TextInputLayout
             android:layout_marginTop="4dp"
             android:layout_width="match_parent"
@@ -185,9 +186,7 @@
                 android:id="@+id/datecorp"
                 android:translationY="1dp"
                 android:background="@drawable/etborder"
-                android:hint="Date of signing (DD/MM/YY)"/>
-        </android.support.design.widget.TextInputLayout>
-
+                android:hint="Date of signing (DD/MM/YY)"/>-->
         <android.support.design.widget.TextInputLayout
             android:layout_marginTop="4dp"
             android:layout_width="match_parent"
@@ -197,6 +196,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/periodofagree"
                 android:translationY="1dp"
+                android:inputType="number"
                 android:background="@drawable/etborder"
                 android:hint="Period of agreement(In years)"/>
         </android.support.design.widget.TextInputLayout>
@@ -210,6 +210,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/qtyexpected"
                 android:translationY="1dp"
+                android:inputType="number"
                 android:background="@drawable/etborder"
                 android:hint="Expected Quantity per month"/>
         </android.support.design.widget.TextInputLayout>
@@ -223,6 +224,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/noofemps"
                 android:translationY="1dp"
+                android:inputType="number"
                 android:background="@drawable/etborder"
                 android:hint="Number of employees"/>
         </android.support.design.widget.TextInputLayout>

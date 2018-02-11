@@ -35,7 +35,7 @@ int x;
         if (manager != null) {
             statusOfGPS = manager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         }
-
+Intent x= getIntent();
         isNetworkConnectionAvailable();
         if(statusOfGPS)
         {
@@ -97,6 +97,7 @@ int x;
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
 
                 mContext.startActivity(intent);
+             restartThis();
             }
         });
 
@@ -130,6 +131,7 @@ int x;
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
+                restartThis();
             }
         });
         android.app.AlertDialog alertDialog = builder.create();
@@ -156,5 +158,11 @@ int x;
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
+    }
+    private void restartThis() {
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
     }
 }

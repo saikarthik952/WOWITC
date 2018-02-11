@@ -66,6 +66,7 @@ android:elevation="4dp"
             android:translationY="1dp"
             android:background="@drawable/etborder"
             android:hint="No of Students attended"
+            android:inputType="number"
             android:id="@+id/students_attended"/> </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -137,7 +138,7 @@ android:elevation="4dp"
                 android:layout_width="match_parent"
                 android:id="@+id/members"
                 android:layout_height="wrap_content"
-                android:hint="=NO. Of Students in Swatch WOW Club"
+                android:hint="NO. Of Students in Swatch WOW Club"
                 android:translationY="1dp"
                 android:background="@drawable/etborder"
                 />

@@ -1,6 +1,7 @@
 package wow.itc.com.wow_itc;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +28,7 @@ public class FollowUpPropagationActivity extends AppCompatActivity {
     String lat,longitude;
 
     int a,bx;
-
+    ProgressDialog md;
     Button b,sg,notsg;
     int seg=0,notseg=0;
 
@@ -50,14 +52,14 @@ notes=findViewById(R.id.note);
         wardname=findViewById(R.id.pename);
 sg=findViewById(R.id.seg);
 notsg=findViewById(R.id.notsg);
-        nme=wardname.getText().toString();
+md=new ProgressDialog(this);
          ngopename=findViewById(R.id.ngoempname);
         ward=findViewById(R.id.ward);
         ngopenames=ngopename.getText().toString();
         sharedpreferences   = getSharedPreferences("DATAPE", Context.MODE_PRIVATE);
         int x = sharedpreferences.getInt("NGO", 0);
         int  y= sharedpreferences.getInt("City",0);
-         String wardno = sharedpreferences.getString("wardno", "");
+         final String wardno = sharedpreferences.getString("wardno", "");
         ngo.setSelection(x);
         city.setSelection(y);
         ward.setText(wardno);
@@ -98,18 +100,26 @@ notsg=findViewById(R.id.notsg);
             @Override
             public void onClick(View v) {
                             snote=notes.getText().toString();
-               l=wardname.getText().toString();
+               l=ward.getText().toString();
                n=ngopename.getText().toString();
                 xd = ngo.getSelectedItem().toString();
                 yd=city.getSelectedItem().toString();
+                nme=wardname.getText().toString();
+if(check(ngopename)||check(wardname)||check(ward))
+{
+    Toast.makeText(FollowUpPropagationActivity.this,"All Fields are mandatory",Toast.LENGTH_LONG).show();
+}else {
 
                 if(gpsTracker.getIsGPSTrackingEnabled()) {
+                    md.setTitle("Submitting");
+                    md.setCancelable(false);
+                    md.show();
                     lat = String.valueOf(gpsTracker.getLatitude());
                     longitude = String.valueOf(gpsTracker.getLongitude());
 
-                    Call<Void> completeFollowup = spreadsheetWebService.completeFollowup(xd, yd, l, nme, seg, notseg,n,lat,longitude,  snote);
+                    Call<Void> completeFollowup = spreadsheetWebService.completeFollowup(xd, yd, l, nme, seg, notseg, n, lat, longitude, snote);
                     completeFollowup.enqueue(callCallbac);
-                }
+                }        }
             }
         });
 
@@ -118,6 +128,7 @@ notsg=findViewById(R.id.notsg);
         @Override
         public void onResponse(Call<Void> call, Response<Void> response) {
             Log.d("XXX", "Submitted. " + response);
+            md.dismiss();
             Intent lp= getIntent();
             lp.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             finish();
@@ -131,4 +142,13 @@ notsg=findViewById(R.id.notsg);
 
 
     };
+    public boolean check(EditText edt)
+    {
+
+        if(edt.getText().toString().isEmpty()) {
+            edt.setError("Field should not be empty");
+            return true;
+        }
+        return false;
+    }
 }

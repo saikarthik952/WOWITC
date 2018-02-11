@@ -14,7 +14,7 @@ Context context;
     DataBaseHelpher helpher;
     List<Visit> dbList;
     RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,7 @@ Context context;
         mRecyclerView.setHasFixedSize(true);
 context=VisitedSchools.this;
         // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(context);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)

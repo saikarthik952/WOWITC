@@ -68,7 +68,7 @@
                 android:layout_height="29dp"
                 android:id="@+id/cityspinner" />
         </LinearLayout>
-        <android.support.design.widget.TextInputLayout
+   <!--     <android.support.design.widget.TextInputLayout
             android:layout_marginTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -80,7 +80,7 @@
                 android:background="@drawable/etborder"
                 android:hint="Date of collection"/>
 
-        </android.support.design.widget.TextInputLayout>
+        </android.support.design.widget.TextInputLayout>-->
         <android.support.design.widget.TextInputLayout
             android:layout_marginTop="4dp"
             android:layout_width="match_parent"

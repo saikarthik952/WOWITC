@@ -10,7 +10,7 @@ import retrofit2.http.POST;
  */
 
 public interface CorporatePropInterface {
-    @POST("1FAIpQLSfpp7iDA5P7dxRYJ79g22iITgmbJGssDsZel6HgcT4STdHJ-A/formResponse")
+    @POST("1FAIpQLSfXiHc2aFY6QNma1xLtq7gCvfBubDw9rQJDxbZtdH5GH-FMFQ/formResponse")
     @FormUrlEncoded
     Call<Void> CorporateProp(
             @Field("entry.1782179856") String NGO,

@@ -1,5 +1,6 @@
 package wow.itc.com.wow_itc;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,7 +22,7 @@ public class SchoolVisit extends AppCompatActivity {
     public CheckBox scconfirm;
 
     public EditText studentstrength;
-
+    ProgressDialog md;
     public EditText note;
     public EditText ngoempname;
     public EditText area;
@@ -79,9 +81,22 @@ String s= scname.getText().toString();
                     h="No";
                 }
                String a=studentstrength.getText().toString();
-
-                helpher.insertIntoDB(m, k, o, s, h,a,are,ngoemp);
-            }
+if(check(ngoempname)||check(person)||check(scname)||check(mail)||check(phone)||check(studentstrength)||check(area))
+{
+    Toast.makeText(SchoolVisit.this,"All fields are Mandatory",Toast.LENGTH_LONG).show();
+}
+else {
+    helpher.insertIntoDB(m, k, o, s, h, a, are, ngoemp);
+}           }
         });
+    }
+    public boolean check(EditText edt)
+    {
+
+        if(edt.getText().toString().isEmpty()) {
+            edt.setError("Field should not be empty");
+            return true;
+        }
+        return false;
     }
 }

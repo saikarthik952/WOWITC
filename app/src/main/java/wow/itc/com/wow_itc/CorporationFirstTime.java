@@ -1,6 +1,7 @@
 package wow.itc.com.wow_itc;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -49,34 +50,39 @@ gpstracker gpsTracker;
     public String slocations;
     public String speriod;
     public String sqty;
+    ProgressDialog md;
     public String snoofemps;
     public String snote,lat,longitude,ngos,citys;
-
+    ProgressDialog psd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_corporation_first_time);
-
+        ngo = (Spinner) findViewById(R.id.ngospinner);
+        city = (Spinner) findViewById(R.id.cityspinner);
         corpsubmit = (Button) findViewById(R.id.corpsubmit);
 gpsTracker = new gpstracker(this);
         @SuppressLint("ResourceType") ArrayAdapter<String> aa = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ngos));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //Setting the ArrayAdapter data on the Spinner
         ngo.setAdapter(aa);
+        psd=new ProgressDialog(this,R.style.MyTheme);
+        psd.setCancelable(false);
+        psd.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
 
         ArrayAdapter<String> bb = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.cities));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         city.setAdapter(bb);
-        ngo = (Spinner) findViewById(R.id.ngospinner);
-        city = (Spinner) findViewById(R.id.cityspinner);
+md= new ProgressDialog(this);
         areaofvisit = (EditText) findViewById(R.id.areacorp);
-        date = (EditText) findViewById(R.id.datecorp);
+      //  date = (EditText) findViewById(R.id.datecorp);
         ngoempname = (EditText) findViewById(R.id.ngoempnamecorp);
         person = (EditText) findViewById(R.id.personcontacted);
         valueofmatexchanged= (EditText) findViewById(R.id.valueofmaterialexchanged);
         phoneno = (EditText) findViewById(R.id.phonecorp);
         mail = (EditText) findViewById(R.id.emailcorp);
         mou = (EditText) findViewById(R.id.moucorp);
+        corpname=findViewById(R.id.corporatename);
         locations = (EditText) findViewById(R.id.nooflocs);
         qty = (EditText) findViewById(R.id.qtyexpected);
         noofemps = (EditText) findViewById(R.id.noofemps);
@@ -116,7 +122,9 @@ gpsTracker = new gpstracker(this);
                 }
                 else {
 
-
+                    md.setTitle("Submitting");
+                    md.setCancelable(false);
+                    md.show();
                     if (gpsTracker.getIsGPSTrackingEnabled()) {
                         lat = String.valueOf(gpsTracker.getLatitude());
                         longitude = String.valueOf(gpsTracker.getLongitude());
@@ -132,6 +140,8 @@ gpsTracker = new gpstracker(this);
         @Override
         public void onResponse(Call<Void> call, Response<Void> response) {
             Log.d("XXX", "Submitted. " + response);
+
+            md.dismiss();
             Intent lp= getIntent();
             lp.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             finish();
@@ -141,6 +151,8 @@ gpsTracker = new gpstracker(this);
         @Override
         public void onFailure(Call<Void> call, Throwable t) {
             Log.e("XXX", "Failed", t);
+            psd.setMessage("Failed......!!!");
+            psd.dismiss();
         }
 
 
@@ -153,5 +165,9 @@ gpsTracker = new gpstracker(this);
             return true;
         }
         return false;
+    }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(),CorporateCheck.class));
     }
 }

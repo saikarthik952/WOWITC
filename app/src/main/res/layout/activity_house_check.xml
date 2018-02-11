@@ -1,58 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HouseCheck"
-    android:background="@drawable/plore"
     android:orientation="vertical"
 
 
     >
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.2">
-       <ImageView
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="200dp"
+      android:orientation="horizontal"
 
-           />
-    </RelativeLayout>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
-        android:id="@+id/household"
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="House Hold Profile"
-        android:layout_above="@+id/followup"
-        android:background="@drawable/btn_border"
+      android:layout_gravity="fill_horizontal">
+      <Button
+          android:id="@+id/household"
+          style="@style/Base.Widget.AppCompat.Button.Borderless"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+    android:layout_weight="1"
+          android:text="House Hold Profile"
 
-        />
-    <Button
-        android:id="@+id/followup"
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
+          android:background="@drawable/btn_border"
+
+          />
+      <Button
+          android:id="@+id/followup"
+          style="@style/Base.Widget.AppCompat.Button.Borderless"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+       android:layout_weight="1"
+
+          android:text="Follow Up Propagation"
+          android:background="@drawable/btn_border"
+          android:layout_above="@+id/hubcollection"
+          />
+  </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        android:text="Follow Up Propagation"
-        android:background="@drawable/btn_border"
-        android:layout_above="@+id/hubcollection"
-        />
+        android:layout_height="200dp"
+        android:orientation="horizontal"
+
+        android:layout_gravity="fill_horizontal">
     <Button
         android:id="@+id/hubcollection"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        android:text="Hub Collection Centre"
+        android:layout_height="match_parent"
+       android:layout_weight="1"
+        android:text="Dry Resource Collection Centre"
         android:background="@drawable/btn_border"
         android:layout_centerInParent="true"
         />
@@ -60,28 +59,26 @@
         android:id="@+id/school"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:text="School"
-        android:layout_marginTop="8dp"
+
         android:background="@drawable/btn_border"
         android:layout_below="@+id/hubcollection"
         />
-
+    </LinearLayout>
     <Button
         android:id="@+id/corporate"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/school"
-        android:layout_marginTop="8dp"
+        android:layout_height="200dp"
+
+
         android:background="@drawable/btn_border"
         android:gravity="center"
         android:text="Corporate Collection" />
 
 
 
-</RelativeLayout>
 
-</FrameLayout>
+</LinearLayout>

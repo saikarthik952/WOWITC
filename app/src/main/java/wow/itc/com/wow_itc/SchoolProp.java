@@ -2,6 +2,7 @@ package wow.itc.com.wow_itc;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -59,7 +60,7 @@ String proptypes;
     public Button scpropsubmit,image,edit;
     String num;
     String areavisit,personame,phonenumber,schoolname,email,schoolconfirmed,strength,attened,IEC,otherbenifits;
-
+    ProgressDialog md;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +72,7 @@ String proptypes;
         iec =  findViewById(R.id.iec);
 
         image=findViewById(R.id.schoolpropimage);
-
+md= new ProgressDialog(this);
         ngoempnames = findViewById(R.id.ngoempnamescprop);
         scpropsubmit = findViewById(R.id.scpropsubmit);
 treecheck=findViewById(R.id.treeplantationcheck);
@@ -158,10 +159,17 @@ ngoempname=dbList.get(position).getNgoname();
                 other_benifits=findViewById(R.id.otherbenifits);
                 num=members.getText().toString();
                 otherbenifits=other_benifits.getText().toString();
-                drivesend();
-                helpher.propinsert(areavisit,personame,schoolname,phonenumber,email,schoolconfirmed,strength
-                ,attened,IEC,otherbenifits,stree,swater,club,num,ngoempname,proptypes);
-
+                if(check(ngoempnames)||check(nosas)||check(iec)||check(other_benifits)||check(members))
+                {
+                    Toast.makeText(SchoolProp.this,"All Fields are Mandatory",Toast.LENGTH_LONG).show();
+                }else {
+                    md.setTitle("Submitting");
+                    md.setCancelable(false);
+                    md.show();
+                    drivesend();
+                    helpher.propinsert(areavisit, personame, schoolname, phonenumber, email, schoolconfirmed, strength
+                            , attened, IEC, otherbenifits, stree, swater, club, num, ngoempname, proptypes);
+                }
             }
         });
     }
@@ -175,6 +183,8 @@ ngoempname=dbList.get(position).getNgoname();
                         //loading.dismiss();
                         Log.e("null","values"+userImage);
                         Toast.makeText(SchoolProp.this,response,Toast.LENGTH_LONG).show();
+                        md.dismiss();
+                        startActivity(new Intent(SchoolProp.this,SchoolActivity.class));
                     }
                 },
                 new Response.ErrorListener() {
@@ -244,5 +254,14 @@ ngoempname=dbList.get(position).getNgoname();
         //super.onBackPressed();
         Intent i =new Intent(SchoolProp.this,SchoolActivity.class);
         startActivity(i);
+    }
+    public boolean check(EditText edt)
+    {
+
+        if(edt.getText().toString().isEmpty()) {
+            edt.setError("Field should not be empty");
+            return true;
+        }
+        return false;
     }
 }

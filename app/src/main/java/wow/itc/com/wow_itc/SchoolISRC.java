@@ -3,6 +3,7 @@ package wow.itc.com.wow_itc;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -54,7 +55,7 @@ public class SchoolISRC extends AppCompatActivity {
     DatePickerDialog datePickerDialog;
 
     public EditText date;
-
+String  imgprop,imgisrc;
     public EditText studentsattended;
     public EditText qtycollected;
     public EditText valueofmatexchanged;
@@ -64,7 +65,7 @@ gpstracker gpsTracker;
 EditText greenchampion,qtygreenchampion;
 
     String sdate,userImage,u;
-
+    ProgressDialog md;
     Calendar dateSelected;
     String sstudentsattended;
     String sqtycollected,ngos,citys;
@@ -77,13 +78,13 @@ EditText greenchampion,qtygreenchampion;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_isrc);
-        ngo=findViewById(R.id.spinner);
-        city=findViewById(R.id.city);
+        ngo = findViewById(R.id.spinner);
+        city = findViewById(R.id.city);
         @SuppressLint("ResourceType") ArrayAdapter<String> aa = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.ngos));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+md=new ProgressDialog(this);
         ngo.setAdapter(aa);
-gpsTracker=new gpstracker(this);
+        gpsTracker = new gpstracker(this);
         city = findViewById(R.id.city);
         ArrayAdapter<String> bb = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.cities));
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -91,18 +92,18 @@ gpsTracker=new gpstracker(this);
         studentsattended = (EditText) findViewById(R.id.students_attended);
         qtycollected = (EditText) findViewById(R.id.quantitycollected);
         valueofmatexchanged = (EditText) findViewById(R.id.valueofmaterialexchanged);
-image=findViewById(R.id.schoolpropimage);
+        image = findViewById(R.id.schoolpropimage);
 
 
-greenchampion=findViewById(R.id.greenchampion);
-submitisrc=findViewById(R.id.scisrcsubmit);
-      mcurrentDate  =Calendar.getInstance();
-qtygreenchampion=findViewById(R.id.greenchampcollected);
+        greenchampion = findViewById(R.id.greenchampion);
+        submitisrc = findViewById(R.id.scisrcsubmit);
+        mcurrentDate = Calendar.getInstance();
+        qtygreenchampion = findViewById(R.id.greenchampcollected);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://docs.google.com/forms/u/3/d/e/")
                 .build();
-         spreadsheetWebService = retrofit.create(ISRCInterface.class);
-date=findViewById(R.id.datescisrc);
+        spreadsheetWebService = retrofit.create(ISRCInterface.class);
+        date = findViewById(R.id.datescisrc);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
@@ -111,72 +112,80 @@ date=findViewById(R.id.datescisrc);
 
 
         helpher = new DataBaseHelpher(this);
-        dbList= new ArrayList<Propagation>();
+        dbList = new ArrayList<Propagation>();
         dbList = helpher.propdata();
-        if(dbList.size()>0)
-        {
-            personame=dbList.get(position).getPersoname();
-            email=dbList.get(position).getEmail();
-            phonenumber=dbList.get(position).getPhonenumber();
-            schoolname=dbList.get(position).getSchoolname();
-            schoolconfirmed=dbList.get(position).getSchoolconfirmed();
-            strength=dbList.get(position).getStrength();
-            areavisit=dbList.get(position).getAreavisit();
-            ngoempnames=dbList.get(position).getNgoempname();
-            attened=dbList.get(position).getAttened();
-            IEC=dbList.get(position).getIEC();
-            otherbenifits=dbList.get(position).getOtherbenifits();
-            tree= dbList.get(position).getTree();
-            water=dbList.get(position).getWater();
-            proptype=dbList.get(position).getTypeofprop();
-            wowclub=dbList.get(position).getWowclub();
-            numofstudents=dbList.get(position).getNumofstudents();
+        if (dbList.size() > 0) {
+            personame = dbList.get(position).getPersoname();
+            email = dbList.get(position).getEmail();
+            phonenumber = dbList.get(position).getPhonenumber();
+            schoolname = dbList.get(position).getSchoolname();
+            schoolconfirmed = dbList.get(position).getSchoolconfirmed();
+            strength = dbList.get(position).getStrength();
+            areavisit = dbList.get(position).getAreavisit();
+            ngoempnames = dbList.get(position).getNgoempname();
+            attened = dbList.get(position).getAttened();
+            IEC = dbList.get(position).getIEC();
+            otherbenifits = dbList.get(position).getOtherbenifits();
+            tree = dbList.get(position).getTree();
+            water = dbList.get(position).getWater();
+            proptype = dbList.get(position).getTypeofprop();
+            wowclub = dbList.get(position).getWowclub();
+            numofstudents = dbList.get(position).getNumofstudents();
 
         }
-         dateSelected = Calendar.getInstance();
+        dateSelected = Calendar.getInstance();
 
-     if(date.hasFocus())
-        {
+        if (date.hasFocus()) {
             setDateTimeField();
         }
 
         image.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent photo = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        @SuppressLint("SdCardPath") Uri uri= Uri.parse("file:///sdcard/photo.jpg");
-        photo.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, uri);
-        startActivityForResult(photo,1);
+            @Override
+            public void onClick(View v) {
+                Intent photo = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                @SuppressLint("SdCardPath") Uri uri = Uri.parse("file:///sdcard/photo.jpg");
+                photo.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, uri);
+                startActivityForResult(photo, 1);
 
-    }
-});
+            }
+        });
 
         submitisrc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-greenchampions=greenchampion.getText().toString();
-qtygreen=qtycollected.getText().toString();
-                ngos=ngo.getSelectedItem().toString();
-                citys=city.getSelectedItem().toString();
+                greenchampions = greenchampion.getText().toString();
+                qtygreen = qtycollected.getText().toString();
+                ngos = ngo.getSelectedItem().toString();
+                citys = city.getSelectedItem().toString();
                 sstudentsattended = studentsattended.getText().toString();
                 sqtycollected = qtycollected.getText().toString();
                 svalue = valueofmatexchanged.getText().toString();
-drivesend();
-                if (gpsTracker.getIsGPSTrackingEnabled()) {
-                  String  lat = String.valueOf(gpsTracker.getLatitude());
-                   String longitude = String.valueOf(gpsTracker.getLongitude());
-                    Call<Void> completeQuestionnaireCall = spreadsheetWebService.completeSchoolISRC(ngos,citys,areavisit,ngoempnames,schoolname,
-                            personame,phonenumber,email,schoolconfirmed,strength,attened,wowclub,numofstudents,proptype,
-                            IEC,otherbenifits,tree,water,otherbenifits,sstudentsattended,sqtycollected,svalue,
-                            greenchampions,qtygreen,lat,longitude,ngos);
+                if (check(studentsattended) || check(qtycollected) || check(valueofmatexchanged) || check(greenchampion) || check(valueofmatexchanged)) {
+                    Toast.makeText(SchoolISRC.this, "All Fields are Mandatory", Toast.LENGTH_LONG).show();
+                } else {
+                    md.setTitle("submitting");
+                    md.setCancelable(false);
+                    md.show();
+                    drivesend();
+imgprop=ngoempnames="_"+schoolname+"-prop.jpeg";
+                    imgisrc=ngoempnames="_"+schoolname+"-isrc.jpeg";
+                    if (gpsTracker.getIsGPSTrackingEnabled()) {
+                        String lat = String.valueOf(gpsTracker.getLatitude());
+                        String longitude = String.valueOf(gpsTracker.getLongitude());
+                        Call<Void> completeQuestionnaireCall = spreadsheetWebService.completeSchoolISRC(ngos, citys, areavisit, ngoempnames, schoolname,
+                                personame, phonenumber, email, schoolconfirmed, strength, attened, wowclub, numofstudents, proptype,
+                                IEC, otherbenifits, tree, water, otherbenifits, sstudentsattended, sqtycollected, svalue,
+                                greenchampions, qtygreen, lat, longitude,imgprop,imgisrc);
 
-                    completeQuestionnaireCall.enqueue(callCallback);
+                        completeQuestionnaireCall.enqueue(callCallback);
+                    }
                 }
+
             }
         });
-
-
     }
+
+
     private final Callback<Void> callCallback = new Callback<Void>() {
 
 
@@ -184,10 +193,6 @@ drivesend();
         public void onResponse(@NonNull Call<Void> call, @NonNull retrofit2.Response<Void> response) {
             Log.d("XXX", "Submitted. " + response);
 
-            Intent lp = getIntent();
-            lp.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            finish();
-            startActivity(lp);
         }
 
         @Override
@@ -197,6 +202,7 @@ drivesend();
 
 
     };
+
     private void drivesend() {
         Log.e("null","values"+userImage);
         StringRequest stringRequest = new StringRequest(Request.Method.POST,"https://script.google.com/macros/s/AKfycbySs60cndWfCLtuF1do4GIAOSHZUFr7-oGABCM6o8ZNzHHkql8S/exec",
@@ -206,6 +212,10 @@ drivesend();
                         //loading.dismiss();
                         Log.e("null","values"+userImage);
                         Toast.makeText(SchoolISRC.this,response,Toast.LENGTH_LONG).show();
+                        md.dismiss();
+                        Intent p= new Intent(SchoolISRC.this,SchoolActivity.class);
+                        finish();
+                        startActivity(p);
                     }
                 },
                 new Response.ErrorListener() {
@@ -220,7 +230,7 @@ drivesend();
                 params.put("action","insert");
                 params.put("uId",schoolname);
                 params.put("uName",ngoempnames);
-                params.put("uImage",u);
+                params.put("uImage",userImage);
 
                 return params;
             }
@@ -289,6 +299,15 @@ drivesend();
             }
         }
 
+    }
+    public boolean check(EditText edt)
+    {
+
+        if(edt.getText().toString().isEmpty()) {
+            edt.setError("Field should not be empty");
+            return true;
+        }
+        return false;
     }
 
 }

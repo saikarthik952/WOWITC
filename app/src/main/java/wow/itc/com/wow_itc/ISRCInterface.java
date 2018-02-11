@@ -39,6 +39,7 @@ public interface ISRCInterface {
             @Field("entry.1656271789") String quantityofgreenchampion,
             @Field("entry.1866982595") String latitude,
             @Field("entry.2118485424") String longitude,
-            @Field("entry.945303140") String Note
+            @Field("entry.990618659") String imgprop,
+            @Field("entry.1185679749") String imgisrc
     );
 }

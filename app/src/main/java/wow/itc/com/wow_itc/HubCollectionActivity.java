@@ -2,6 +2,7 @@ package wow.itc.com.wow_itc;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,6 +39,8 @@ ArrayAdapter<String> adapters;
     Button review;
     Activity mContext;
     StringBuilder results;
+    ProgressDialog md;
+    String ab,bc,cd,dd,ee,f,g,h,ij,j,k,l,mm,nn,o,p,q,rr,s,t,u,v,w;
     String[] sg1={"PK","RagPicker","Commercial","Others Please Specify"};
 Context c;
     Float totalamount;
@@ -70,7 +73,7 @@ adapters= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,resu
         ArrayAdapter<String> cc = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,sg1);
         cc.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         segment.setAdapter(cc);
-
+md= new ProgressDialog(this);
         wardno=findViewById(R.id.ward);
         nameofhub=findViewById(R.id.hubname);
         collectionpointname=findViewById(R.id.collname);
@@ -153,118 +156,149 @@ adapters= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_2,resu
                 svehiclenumber=vehiclenumber.getText().toString();
                 snameofhub=nameofhub.getText().toString();
                 shubsupname=hubsupname.getText().toString();
-                xfdmw= new Float(dmw.getText().toString());
-                afdmw=multiplyfloat(xfdmw,fdmw);
+                cd=dmw.getText().toString();
+                ab=lvp.getText().toString();
                 materialname=materialrecieveename.getText().toString();
-                xflvp=  new Float(lvp.getText().toString());
-                aflvp=multiplyfloat(xflvp,flvp);
+                bc=colorrec.getText().toString();s=materilaa.getText().toString();
+                dd=petbot.getText().toString();
+                f= hardplastic.getText().toString();rr= coconut.getText().toString();
+                g= tetra.getText().toString(); k=oldmag.getText().toString();   l= notebook.getText().toString();
+                h=   kraft.getText().toString();  o= aluminium.getText().toString();  q=tinaluminium.getText().toString();
+                ij=   oldpapaer.getText().toString(); nn= iron.getText().toString();              scollecpointname=collectionpointname.getText().toString();
+                ee= milk.getText().toString();  mm=  whiterec.getText().toString(); t=beerbottle.getText().toString();
+                materialname=materialrecieveename.getText().toString(); p=tin.getText().toString();
 for(int i=0;i<adapters.getCount();i++)
     adapters.clear();
-                resultantdata.add("DMW : "+xfdmw+"Cost :"+afdmw+" Cost Per KG : "+fdmw);
-              resultantdata.add("LVP : "+xflvp+"Cost :"+aflvp+" Cost Per KG :"+flvp);
-                //editor.putFloat("lvp",flvp);
-                materialname=materialrecieveename.getText().toString();
-                xfcolorrec=  new Float(colorrec.getText().toString());
-                afcolorrec=multiplyfloat(xfcolorrec,fcolorrec);
 
-                resultantdata.add("Color Record : "+xfcolorrec+" Cost :"+afcolorrec+" Cost Per KG : "+fcolorrec);//editor.putFloat("colorec",fcolorrec);
-                xfpetbot=  new Float(petbot.getText().toString());
-                afpetbot=multiplyfloat(xfpetbot,fpetbot);
-
-                resultantdata.add("Pet Bottles : "+xfpetbot+" Cost :"+afpetbot+" Cost Per KG : "+fpetbot);
-                //editor.putFloat("petbot",fpetbot);
-                xfmilk=  new Float(milk.getText().toString());
-                afmilk=multiplyfloat(xfmilk,fmilk);
-                //editor.putFloat("milk",fmilk);
-
-                resultantdata.add("Milk packets: "+xfmilk+" Cost : "+afmilk+" Cost Per KG : "+fmilk);
-                xfhardplastic=  new Float(hardplastic.getText().toString());
-                afhardplastic=multiplyfloat(xfhardplastic,fhardplastic);
-                //editor.putFloat("hardplastic",fhardplastic);
-
-                resultantdata.add("Hard Plastic : "+xfhardplastic+" Cost : "+afhardplastic+" Cost Per KG : "+fhardplastic);
-                xftetra=  new Float(tetra.getText().toString());
-                aftetra=multiplyfloat(xftetra,ftetra);
-
-                resultantdata.add("Tetra Packs : "+xftetra+" Cost :"+aftetra+" Cost Per KG : "+ftetra);
-                //editor.putFloat("tetra",ftetra);
-                xfkraft=  new Float(kraft.getText().toString());
-                afkraft=multiplyfloat(xfkraft,fkraft);
-
-                resultantdata.add("Kraft : "+xfkraft+" Cost :"+afkraft+" Cost Per KG : "+fkraft);
-                //editor.putFloat("kraft",fkraft);
-                xfoldpapaer=  new Float(oldpapaer.getText().toString());
-                //editor.putFloat("paper",foldpapaer);
-                afoldpapaer=multiplyfloat(xfoldpapaer,foldpapaer);
-
-                resultantdata.add("Old Papers : "+xfoldpapaer+" Cost :"+afoldpapaer+" Cost Per KG : "+foldpapaer);
-                xfoldmag=  new Float(oldmag.getText().toString());
-                //editor.putFloat("oldmag",foldmag);
-                afoldmag=multiplyfloat(xfoldmag,foldmag);
-
-                resultantdata.add("Old Magazines : "+xfoldmag+" Cost :"+afoldmag+" Cost Per KG : "+fdmw);
-                xfnotebook=  new Float(notebook.getText().toString());
-                //editor.putFloat("notebook",fnotebook);
-                afnotebook=multiplyfloat(xfnotebook,fnotebook);
-
-                resultantdata.add("NoteBooks: "+xfnotebook+" Cost :"+afnotebook+" Cost Per KG : "+fnotebook);
-                xfwhiterec=  new Float(whiterec.getText().toString());
-                //editor.putFloat("whiterec",fwhiterec);
-                afwhiterec=multiplyfloat(xfwhiterec,fwhiterec);
-
-                resultantdata.add("White Records : "+xfwhiterec+" Cost :"+afwhiterec+" Cost Per KG : "+fwhiterec);
-                xfiron=  new Float(iron.getText().toString());
-                //editor.putFloat("iron",firon);
-                afiron=multiplyfloat(xfiron,firon);
-
-                resultantdata.add("Metal(Iron) : "+xfiron+" Cost :"+afiron+" Cost Per KG : "+firon);
-                xfaluminium=  new Float(aluminium.getText().toString());
-                //editor.putFloat("alumini",faluminium);
-                afaluminium=multiplyfloat(xfaluminium,faluminium);
-
-                resultantdata.add("Aluminuim : "+xfaluminium+" Cost :"+afaluminium+" Cost Per KG : "+firon);
-                xftin=  new Float(tin.getText().toString());
-                //editor.putFloat("tim",ftin);
-                aftin =multiplyfloat(xftin,ftin);
-
-                resultantdata.add("Tin : "+xftin+" Cost :"+aftin+" Cost Per KG : "+ftin);
-                xftinaluminium=  new Float(tinaluminium.getText().toString());
-                //editor.putFloat("tinalumini",ftinaluminium);
-                aftinaluminium=multiplyfloat(xftinaluminium,ftinaluminium);
-
-                resultantdata.add("Tin(Aluminuim) : "+xftinaluminium+" Cost :"+aftinaluminium+" Cost Per KG : "+ftinaluminium);
-                xfcoconut=  new Float(coconut.getText().toString());
-                //editor.putFloat("coconut",fcoconut);
-                afcoconut=multiplyfloat(xfcoconut,fcoconut);
-                resultantdata.add("Coconut Shells : "+xfcoconut+" Cost :"+afcoconut+" Cost Per KG : "+fcoconut);
-
-                xfmaterilaa=  new Float(materilaa.getText().toString());
-                afmaterilaa=multiplyfloat(xfmaterilaa,fmaterilaa);
-                resultantdata.add("Material A : "+xfmaterilaa+" Cost :"+afmaterilaa+" Cost Per KG : "+fmaterilaa);
-
-                xfbeerbottle= new Float(beerbottle.getText().toString());
-                afbeerbottle=multiplyfloat(xfbeerbottle,fbeerbottle);
-
-                resultantdata.add("Beer Bottles: "+xfbeerbottle+" Cost :"+afbeerbottle+" Cost Per Bottle : "+fbeerbottle);
-                total=calctotal();
-                totalamount=totalamountcount();
-                resultantdata.add("Total Weight : "+total);
-                resultantdata.add("Total Amount : "+totalamount);
 //resultantdata.notify();
-                //results.append("Total Amount :").append(totalamount).append("\n");
-                scollecpointname=collectionpointname.getText().toString();
-               // String names[] ={"A","B","C","D"};
+                    //results.append("Total Amount :").append(totalamount).append("\n");
+
+                    // String names[] ={"A","B","C","D"};
                 if(check(wardno)|| check(nameofhub)|| check(collectionpointname)|| check(dmw)|| check(lvp)||
                         check(colorrec)||check(petbot)|| check(milk)||check(hardplastic)||check(tetra)||
                         check(kraft)||check(oldpapaer)||check(oldmag)||check(notebook)||check(whiterec)||
                         check(iron)||check(aluminium)||check(tin)||check(tinaluminium)||check(coconut)||check(materilaa)
                         ||check(beerbottle)||check(hubsupname) || check(vehiclenumber))
                 {
-                    Toast.makeText(HubCollectionActivity.this,"All Fields are mandatory \n You can Skip if you dont Want to Fill Details",Toast.LENGTH_LONG).show();
+                    Toast.makeText(HubCollectionActivity.this,"All Fields are mandatory",Toast.LENGTH_LONG).show();
                 }
-           Intent l= new Intent(HubCollectionActivity.this,HubCollectionData.class);
-           l.putExtra("data",resultantdata);
-           startActivity(l);
+                else {
+
+                    //editor.putFloat("lvp",flvp);
+
+
+
+
+                    xfdmw= new Float(cd);
+                    afdmw=multiplyfloat(xfdmw,fdmw);
+                    resultantdata.add("DMW : "+xfdmw+"Cost :"+afdmw+" Cost Per KG : "+fdmw);
+
+                    xflvp=  new Float(ab);
+                    aflvp=multiplyfloat(xflvp,flvp);
+                    resultantdata.add("LVP : "+xflvp+"Cost :"+aflvp+" Cost Per KG :"+flvp);
+                    xfcolorrec=  new Float(bc);
+                    afcolorrec=multiplyfloat(xfcolorrec,fcolorrec);
+
+                    resultantdata.add("Color Record : "+xfcolorrec+" Cost :"+afcolorrec+" Cost Per KG : "+fcolorrec);//editor.putFloat("colorec",fcolorrec);
+
+                    xfpetbot=  new Float(dd);
+                    afpetbot=multiplyfloat(xfpetbot,fpetbot);
+
+                    resultantdata.add("Pet Bottles : "+xfpetbot+" Cost :"+afpetbot+" Cost Per KG : "+fpetbot);
+                    //editor.putFloat("petbot",fpetbot);
+
+                    xfmilk=  new Float(ee);
+                    afmilk=multiplyfloat(xfmilk,fmilk);
+                    //editor.putFloat("milk",fmilk);
+
+                    resultantdata.add("Milk packets: "+xfmilk+" Cost : "+afmilk+" Cost Per KG : "+fmilk);
+                    xfhardplastic=  new Float(f);
+                    afhardplastic=multiplyfloat(xfhardplastic,fhardplastic);
+                    //editor.putFloat("hardplastic",fhardplastic);
+
+                    resultantdata.add("Hard Plastic : "+xfhardplastic+" Cost : "+afhardplastic+" Cost Per KG : "+fhardplastic);
+
+                    xftetra=  new Float(g);
+                    aftetra=multiplyfloat(xftetra,ftetra);
+
+                    resultantdata.add("Tetra Packs : "+xftetra+" Cost :"+aftetra+" Cost Per KG : "+ftetra);
+                    //editor.putFloat("tetra",ftetra);
+                    xfkraft=  new Float(h);
+                    afkraft=multiplyfloat(xfkraft,fkraft);
+
+                    resultantdata.add("Kraft : "+xfkraft+" Cost :"+afkraft+" Cost Per KG : "+fkraft);
+                    //editor.putFloat("kraft",fkraft);
+
+                    xfoldpapaer=  new Float(ij);
+                    //editor.putFloat("paper",foldpapaer);
+                    afoldpapaer=multiplyfloat(xfoldpapaer,foldpapaer);
+
+                    resultantdata.add("Old Papers : "+xfoldpapaer+" Cost :"+afoldpapaer+" Cost Per KG : "+foldpapaer);
+
+                    xfoldmag=  new Float(k);
+                    //editor.putFloat("oldmag",foldmag);
+                    afoldmag=multiplyfloat(xfoldmag,foldmag);
+
+                    resultantdata.add("Old Magazines : "+xfoldmag+" Cost :"+afoldmag+" Cost Per KG : "+fdmw);
+
+                    xfnotebook=  new Float(l);
+                    //editor.putFloat("notebook",fnotebook);
+                    afnotebook=multiplyfloat(xfnotebook,fnotebook);
+
+                    resultantdata.add("NoteBooks: "+xfnotebook+" Cost :"+afnotebook+" Cost Per KG : "+fnotebook);
+
+                    xfwhiterec=  new Float(mm);
+                    //editor.putFloat("whiterec",fwhiterec);
+                    afwhiterec=multiplyfloat(xfwhiterec,fwhiterec);
+
+                    resultantdata.add("White Records : "+xfwhiterec+" Cost :"+afwhiterec+" Cost Per KG : "+fwhiterec);
+
+                    xfiron=  new Float(nn);
+                    //editor.putFloat("iron",firon);
+                    afiron=multiplyfloat(xfiron,firon);
+
+                    resultantdata.add("Metal(Iron) : "+xfiron+" Cost :"+afiron+" Cost Per KG : "+firon);
+
+                    xfaluminium=  new Float(o);
+                    //editor.putFloat("alumini",faluminium);
+                    afaluminium=multiplyfloat(xfaluminium,faluminium);
+
+                    resultantdata.add("Aluminuim : "+xfaluminium+" Cost :"+afaluminium+" Cost Per KG : "+firon);
+
+                    xftin=  new Float(p);
+                    //editor.putFloat("tim",ftin);
+                    aftin =multiplyfloat(xftin,ftin);
+
+                    resultantdata.add("Tin : "+xftin+" Cost :"+aftin+" Cost Per KG : "+ftin);
+
+                    xftinaluminium=  new Float(q);
+                    //editor.putFloat("tinalumini",ftinaluminium);
+                    aftinaluminium=multiplyfloat(xftinaluminium,ftinaluminium);
+
+                    resultantdata.add("Tin(Aluminuim) : "+xftinaluminium+" Cost :"+aftinaluminium+" Cost Per KG : "+ftinaluminium);
+
+                    xfcoconut=  new Float(rr);
+                    //editor.putFloat("coconut",fcoconut);
+                    afcoconut=multiplyfloat(xfcoconut,fcoconut);
+                    resultantdata.add("Coconut Shells : "+xfcoconut+" Cost :"+afcoconut+" Cost Per KG : "+fcoconut);
+
+                    xfmaterilaa=  new Float(s);
+                    afmaterilaa=multiplyfloat(xfmaterilaa,fmaterilaa);
+                    resultantdata.add("Material A : "+xfmaterilaa+" Cost :"+afmaterilaa+" Cost Per KG : "+fmaterilaa);
+
+                    xfbeerbottle= new Float(t);
+                    afbeerbottle=multiplyfloat(xfbeerbottle,fbeerbottle);
+
+                    resultantdata.add("Beer Bottles: "+xfbeerbottle+" Cost :"+afbeerbottle+" Cost Per Bottle : "+fbeerbottle);
+                    total=calctotal();
+                    totalamount=totalamountcount();
+                    resultantdata.add("Total Weight : "+total);
+                    resultantdata.add("Total Amount : "+totalamount);
+
+                    Intent l = new Intent(HubCollectionActivity.this, HubCollectionData.class);
+                    l.putExtra("data", resultantdata);
+                    startActivity(l);
+                }
     }
 
         });
@@ -272,21 +306,34 @@ for(int i=0;i<adapters.getCount();i++)
 b.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        if(gpsTracker.getIsGPSTrackingEnabled()) {
-            lat = String.valueOf(gpsTracker.latitude);
-            longitude = String.valueOf(gpsTracker.longitude);
-            Log.e("XXX", lat);
-            Log.e("XXX", longitude);
-            Log.e("XXX", String.valueOf(total));
-            Call<Void> completeFollowup = spreadsheetWebService.HubCollection(sngo,scity,snameofhub,materialname,ssegment
-                    ,scollecpointname,svehiclenumber
-                    ,afdmw,aflvp,afcolorrec,afpetbot,afmilk,afhardplastic,aftetra,
-                    afkraft,afoldpapaer,afoldmag,afnotebook,afwhiterec,afiron
-                    ,afaluminium,aftin,aftinaluminium,afcoconut
-                    ,afmaterilaa,total,totalamount,afbeerbottle,shubsupname,lat, longitude );
-            completeFollowup.enqueue(callCallbac);
+        if(check(wardno)|| check(nameofhub)|| check(collectionpointname)|| check(dmw)|| check(lvp)||
+                check(colorrec)||check(petbot)|| check(milk)||check(hardplastic)||check(tetra)||
+                check(kraft)||check(oldpapaer)||check(oldmag)||check(notebook)||check(whiterec)||
+                check(iron)||check(aluminium)||check(tin)||check(tinaluminium)||check(coconut)||check(materilaa)
+                ||check(beerbottle)||check(hubsupname) || check(vehiclenumber))
+        {
+            Toast.makeText(HubCollectionActivity.this,"All Fields are mandatory",Toast.LENGTH_LONG).show();
         }
+        else {
+            if (gpsTracker.getIsGPSTrackingEnabled()) {
 
+                md.setTitle("Submitting");
+                md.setCancelable(false);
+                md.show();
+                lat = String.valueOf(gpsTracker.latitude);
+                longitude = String.valueOf(gpsTracker.longitude);
+                Log.e("XXX", lat);
+                Log.e("XXX", longitude);
+                Log.e("XXX", String.valueOf(total));
+                Call<Void> completeFollowup = spreadsheetWebService.HubCollection(sngo, scity, snameofhub, materialname, ssegment
+                        , scollecpointname, svehiclenumber
+                        , afdmw, aflvp, afcolorrec, afpetbot, afmilk, afhardplastic, aftetra,
+                        afkraft, afoldpapaer, afoldmag, afnotebook, afwhiterec, afiron
+                        , afaluminium, aftin, aftinaluminium, afcoconut
+                        , afmaterilaa, total, totalamount, afbeerbottle, shubsupname, lat, longitude);
+                completeFollowup.enqueue(callCallbac);
+            }
+        }
     }
 });
     }
@@ -296,6 +343,7 @@ b.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onResponse(Call<Void> call, Response<Void> response) {
             Log.d("XXX", "Submitted. " + response);
+            md.dismiss();
             Intent lp= getIntent();
             lp.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             finish();
@@ -310,7 +358,7 @@ b.setOnClickListener(new View.OnClickListener() {
 
     };
     private Float totalamountcount() {
-        return afdmw+afaluminium+afcoconut+afcolorrec+afhardplastic+afiron+afkraft+afdmw+aflvp+afmaterilaa+afmilk+afnotebook+afoldmag+afoldpapaer+afpetbot+aftetra+aftin+aftinaluminium+afwhiterec;
+        return afdmw+afaluminium+afcoconut+afcolorrec+afhardplastic+afiron+afkraft+afdmw+aflvp+afmaterilaa+afmilk+afnotebook+afoldmag+afoldpapaer+afpetbot+aftetra+aftin+aftinaluminium+afwhiterec+afbeerbottle;
     }
 
     public Float multiplyfloat(Float x,Float y)
@@ -319,7 +367,7 @@ b.setOnClickListener(new View.OnClickListener() {
     }
     public Float calctotal()
     {
-        return xfdmw+xfaluminium+xfcoconut+xfcolorrec+xfhardplastic+xfiron+xfkraft+xfdmw+xflvp+xfmaterilaa+xfmilk+xfnotebook+xfoldmag+xfoldpapaer+xfpetbot+xftetra+xftin+xftinaluminium+xfwhiterec;
+        return xfdmw+xfaluminium+xfcoconut+xfcolorrec+xfhardplastic+xfiron+xfkraft+xfdmw+xflvp+xfmaterilaa+xfmilk+xfnotebook+xfoldmag+xfoldpapaer+xfpetbot+xftetra+xftin+xftinaluminium+xfwhiterec+xfbeerbottle;
     }
 
     @Override
